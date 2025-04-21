@@ -70,6 +70,11 @@ public class Jurisdiction {
     @NotNull
     @Size(min=2, max=100)
     private String boundary;
+    
+    @SafeHtml
+    @NotNull
+    @Size(min=2, max=100)
+    private String zone;
 
     @SafeHtml
     @NotNull

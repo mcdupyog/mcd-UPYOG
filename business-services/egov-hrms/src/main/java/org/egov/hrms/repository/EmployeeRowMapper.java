@@ -125,7 +125,7 @@ public class EmployeeRowMapper implements ResultSetExtractor<List<Employee>> {
 						.lastModifiedBy(rs.getString("jurisdiction_lastmodifiedby")).lastModifiedDate(rs.getLong("jurisdiction_lastmodifieddate")).build();
 				
 				Jurisdiction jurisdiction = Jurisdiction.builder().id(rs.getString("jurisdiction_uuid")).hierarchy(rs.getString("jurisdiction_hierarchy"))
-						.boundary(rs.getString("jurisdiction_boundary")).boundaryType(rs.getString("jurisdiction_boundarytype"))
+						.boundary(rs.getString("jurisdiction_boundary")).zone(rs.getString("jurisdiction_zone")).boundaryType(rs.getString("jurisdiction_boundarytype"))
 						.tenantId(rs.getString("jurisdiction_tenantid"))
 						.isActive(null == rs.getObject("jurisdiction_isactive")?true:rs.getBoolean("jurisdiction_isactive"))
 						.auditDetails(auditDetails).build();
