@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FormStep, TextInput, CardLabel,Dropdown, LinkButton,Toast} from "@nudmcdgnpm/digit-ui-react-components";
+import { FormStep, TextInput, CardLabel,Dropdown, LinkButton,Toast} from "@upyog/digit-ui-react-components";
 import { Controller, useForm } from "react-hook-form";
 import GIS from "./GIS";
 import Timeline from "../components/Timeline";
@@ -157,7 +157,7 @@ const SVBusinessDetails = ({ t, config, onSelect, userType, formData, editdata, 
   const { control } = useForm();
   const [isOpen, setIsOpen] = useState(false);
 
-  const { data: vendingTypeData } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingActivityType" }],
+  const { data: vendingTypeData } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingActivityType" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["VendingActivityType"]
@@ -169,7 +169,7 @@ const SVBusinessDetails = ({ t, config, onSelect, userType, formData, editdata, 
     vendingTypeOptions.push({ i18nKey: `${vending.name}`, code: `${vending.code}`, value: `${vending.name}` })
   })
 
-  const { data: vendingZone } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingZones" }],
+  const { data: vendingZone } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingZones" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["VendingZones"]
@@ -577,7 +577,6 @@ const SVBusinessDetails = ({ t, config, onSelect, userType, formData, editdata, 
             <CardLabel>{t("SV_DAY_HOUR_OPERATION")} <span className="astericColor">*</span></CardLabel>
             <ApplicationTable
               t={t}
-              styles={{width:"500px"}}
               data={daysOfOperation}
               columns={columns}
               getCellProps={(cellInfo) => ({

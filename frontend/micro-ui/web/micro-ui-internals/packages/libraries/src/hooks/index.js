@@ -25,7 +25,6 @@ import useCommonMDMS from "./useMDMS";
 import useCommonMDMSV2 from "./useMDMSV2";
 import useCustomMDMS from "./useCustomMDMS";
 import useCustomMDMSV2 from "./useCustomMDMSV2";
-import useEnabledMDMS from "./useEnabledMDMS";
 import useCustomAPIHook from "./useCustomAPIHook";
 import useInboxGeneral from "./useInboxGeneral/useInboxGeneral";
 import useApplicationStatusGeneral from "./useStatusGeneral";
@@ -287,7 +286,6 @@ import useTenantsASSET from "./asset/useTenants"
 import useASSETApplicationAction from "./asset/useASSETApplicationAction";
 import useAssetparentSubType from "./asset/useAssetparentSubType";
 import useAssignCreateAPI from "./asset/useAssignCreateAPI";
-import useMaintenanceAPI from "./asset/useMaintenanceAPI";
 import useReturnAPI from "./asset/useReturnAPI";
 import useEditUpdateAPI from "./asset/useEditUpdateAPI";
 
@@ -330,33 +328,6 @@ import useADSDocumentsMDMS from "./ads/useADSDocumentsMDMS";
 import useADSDocumentSearch from "./ads/useADSDocumentSearch";
 import useADSDemandEstimation from "./ads/useADSDemandEstimation"
 import useCMSearch from "./cm/useCMSearch";
-import { useCustomBackNavigation } from "./UseCustomBackNavigationProps";
-import useTankerCreateAPI from "./wt/useTankerCreateAPI";
-import useTankerSearchAPI from "./wt/useTankerSearchAPI";
-import useMobileToiletCreateAPI from "./wt/useMobileToiletCreateAPI";
-import useMobileToiletSearchAPI from "./wt/useMobileToiletSearchAPI";
-import useWTApplicationAction from "./wt/useWTApplicationAction";
-import useWTApplicationDetail from "./wt/useWTApplicationDetail";
-import useMTApplicationDetail from "./wt/useMTApplicationDetail";
-import useMTApplicationAction from "./wt/useMTApplicationAction";
-import useTenantsVENDOR from "./vendor/useTenants";
-import useEmpvendorCreate from "./vendor/useEmpvendorCreate";
-import useEmpvendorSearch from "./vendor/useEmpvendorSearch";
-import useSelectedMDMS from "./useSelectedMDMS";
-import useVendorAdditionaldetailsAPI from "./vendor/useVendorAdditionaldetailsAPI";
-import useCreateDemand from "./sv/useCreateDemand";
-import useEmpvendorCommonSearch from "./vendor/useEmpvendorCommonSearch";
-
-const wt={
-  useTankerCreateAPI,
-  useTankerSearchAPI,
-  useWTApplicationAction,
-  useWTApplicationDetail,
-  useMobileToiletCreateAPI,
-  useMobileToiletSearchAPI,
-  useMTApplicationDetail,
-  useMTApplicationAction
-};
 
 const pgr = {
   useComplaintDetails,
@@ -376,6 +347,7 @@ const pgr = {
   useTradeLicenseBillingslab,
   useMDMS: usePGRMDMS,
 };
+
 
 const fsm = {
   useTenants: useTenantsFSM,
@@ -464,13 +436,6 @@ const dss = {
   useGetChart,
 };
 
-const vendor = {
-  useTenants:useTenantsVENDOR,
-  useEmpvendorCreate,
-  useEmpvendorSearch,
-  useVendorAdditionaldetailsAPI,
-  useEmpvendorCommonSearch,
-}
 const mcollect = {
   useCommonMDMS,
   useMCollectMDMS,
@@ -641,7 +606,6 @@ const asset = {
   useAssetparentSubType,
   useTenants: useTenantsASSET,
   useAssignCreateAPI,
-  useMaintenanceAPI,
   useReturnAPI,
   useEditUpdateAPI
 };
@@ -653,8 +617,7 @@ const sv = {
   useSvSearchApplication,
   useSVApplicationDetail,
   useSVApplicationAction,
-  useSvSearchApplication,
-  useCreateDemand
+  useSvSearchApplication
 }
 
 const ew = {
@@ -755,8 +718,6 @@ const Hooks = {
   ws,
   useCustomMDMS,
   useCustomMDMSV2,
-  useEnabledMDMS,
-  useSelectedMDMS,
   useCustomAPIHook,
   reports,
   useGetHowItWorksJSON,
@@ -774,10 +735,7 @@ const Hooks = {
   chb,
   ads,
   ew,
-  cm,
-  useCustomBackNavigation,
-  wt,
-  vendor
+  cm
 };
 
 export default Hooks;

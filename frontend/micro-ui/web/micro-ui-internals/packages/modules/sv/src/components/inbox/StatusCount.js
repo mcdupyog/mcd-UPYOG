@@ -1,10 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { CheckBox } from "@nudmcdgnpm/digit-ui-react-components";
-/**
- * Component Developed in such a way that it will render Checkbox to show the Number of Status so that employee can filter the data as per
- * the Application Status
- */
+import { CheckBox } from "@upyog/digit-ui-react-components";
+
 const StatusCount = ({ status, searchParams, onAssignmentChange, statusMap, businessServices }) => {
   const { t } = useTranslation();
 

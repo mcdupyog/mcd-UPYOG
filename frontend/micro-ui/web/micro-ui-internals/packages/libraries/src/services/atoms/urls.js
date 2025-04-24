@@ -39,20 +39,20 @@ const Urls = {
     search: "/fsm/v1/_search",
     create: "/fsm/v1/_create",
     update: "/fsm/v1/_update",
-    vendorSearch: "/vendor/v1/_search",
-    vehicleSearch: "/vehicle/v1/_search",
+    vendorSearch: "http://192.168.1.151:8070/vendor/v1/_search",
+    vehicleSearch: "http://192.168.1.151:8061/vehicle/v1/_search",
     audit: "/fsm/v1/_audit",
-    vehicleTripSearch: "/vehicle/trip/v1/_search",
+    vehicleTripSearch: "http://192.168.1.151:8061/vehicle/trip/v1/_search",
     billingSlabSearch: "/fsm-calculator/v1/billingSlab/_search",
-    vehilceUpdate: "/vehicle/trip/v1/_update",
-    createVendor: "/vendor/v1/_create",
-    updateVendor: "/vendor/v1/_update",
-    createVehicle: "/vehicle/v1/_create",
-    updateVehicle: "/vehicle/v1/_update",
-    driverSearch: "/vendor/driver/v1/_search",
-    createDriver: "/vendor/driver/v1/_create",
-    updateDriver: "/vendor/driver/v1/_update",
-    vehicleTripCreate: "/vehicle/trip/v1/_create",
+    vehilceUpdate: "http://192.168.1.151:8061/vehicle/trip/v1/_update",
+    createVendor: "http://192.168.1.151:8070/vendor/v1/_create",
+    updateVendor: "http://192.168.1.151:8070/vendor/v1/_update",
+    createVehicle: "http://192.168.1.151:8061/vehicle/v1/_create",
+    updateVehicle: "http://192.168.1.151:8061/vehicle/v1/_update",
+    driverSearch: "http://192.168.1.151:8070/vendor/driver/v1/_search",
+    createDriver: "http://192.168.1.151:8070/vendor/driver/v1/_create",
+    updateDriver: "http://192.168.1.151:8070/vendor/driver/v1/_update",
+    vehicleTripCreate: "http://192.168.1.151:8061/vehicle/trip/v1/_create",
     advanceBalanceCalculate: "/fsm-calculator/v1/_advancebalancecalculate",
   },
 
@@ -103,8 +103,8 @@ const Urls = {
 
 
   dss: {
-    dashboardConfig: "/dashboard-analytics/dashboard/getDashboardConfig",
-    getCharts: "/dashboard-analytics/dashboard/getChartV2",
+    dashboardConfig: "http://192.168.1.151:8280/dashboard-analytics/dashboard/getDashboardConfig",
+    getCharts: "http://192.168.1.151:8280/dashboard-analytics/dashboard/getChartV2",
   },
 
   mcollect: {
@@ -120,10 +120,10 @@ const Urls = {
     count: "/echallan-services/eChallan/v1/_count",
   },
   hrms: {
-    search: "/egov-hrms/employees/_search",
-    count: "/egov-hrms/employees/_count",
-    create: "/egov-hrms/employees/_create",
-    update: "/egov-hrms/employees/_update",
+    search: "http://192.168.1.151:9999/egov-hrms/employees/_search",
+    count: "http://192.168.1.151:9999/egov-hrms/employees/_count",
+    create: "http://192.168.1.151:9999/egov-hrms/employees/_create",
+    update: "http://192.168.1.151:9999/egov-hrms/employees/_update",
   },
   tl: {
     create: "/tl-services/v1/_create",
@@ -136,7 +136,7 @@ const Urls = {
   receipts: {
     receipt_download: "/egov-pdf/download/PAYMENT/consolidatedreceipt",
     payments: "/collection-services/payments",
-    count: "/egov-hrms/employees/_count",
+    count: "http://192.168.1.151:9999/egov-hrms/employees/_count",
   },
   obps: {
     scrutinyDetails: "/edcr/rest/dcr/scrutinydetails",
@@ -156,7 +156,6 @@ const Urls = {
   },
   edcr: {
     create: "/edcr/rest/dcr/scrutinize",
-    anonymousCreate: "/edcr/rest/dcr/anonymousScrutinize",
   },
 
   events: {
@@ -204,21 +203,16 @@ const Urls = {
     search: "/asset-services/v1/assets/_search",
     update: "/asset-services/v1/assets/_update",
     assign: "/asset-services/v1/assets/assignment/_create",
-    depriciationProcess:"/asset-services/v1/assets/depreciation/_process",  
-    maintenance:"/asset-services/maintenance/v1/_create",  
-    edit_maintenance:"/asset-services/maintenance/v1/_update", 
-    assets_Reciept_Search: "/asset-services/v1/assets/_search",    
-    assetDisposedCreate: "/asset-services/v1/disposal/_create",
-    depriciationList:"/asset-services/v1/assets/depreciation/list",   
-    maintenanceList:"/asset-services/maintenance/v1/_search", 
-    return_asset: "/asset-services/v1/assets/assignment/_update",  
-    disposalList:"/asset-services/v1/disposal/_search",
-    assetAssignable:"/asset-services/v1/assets/assignment/_search",   
+    depriciationProcess:"/asset-services/v1/assets/depreciation/_process",  //this api for assetDepriciationProcess
+    depriciationList:"/asset-services/v1/assets/depreciation/list",   // this api for list of assetDepriciation
+    return_asset: "/asset-services/v1/assets/assignment/_update",
+    assets_Reciept_Search: "/asset-services/v1/assets/_search",     //This url use for  Assets Recipt Detail QR Code 
+    assetDisposedCreate: "/asset-services/v1/disposal/_create"
   },
   ew: {
     create: "/ewaste-services/ewaste-request/_create",
     search: "/ewaste-services/ewaste-request/_search",
-    update: "/ewaste-services/ewaste-request/_update"
+    update: "/ewaste-services/ewaste-request/_update",
   },
 
   sv:{
@@ -226,7 +220,6 @@ const Urls = {
     search: "/sv-services/street-vending/_search",
     update: "/sv-services/street-vending/_update",
     deleteDraft:"/sv-services/street-vending/_deletedraft",
-    demandCreate: "/sv-services/street-vending/_createdemand"
   },
 
   chb: {
@@ -236,7 +229,6 @@ const Urls = {
     slot_search: "/chb-services/booking/v1/_slot-search",
     estimateCreate: "/chb-services/booking/v1/_estimate"
   },
-  // urls for making api calls for advertisement module
   ads: {
     create: "/adv-services/booking/v1/_create",
     search: "/adv-services/booking/v1/_search",
@@ -248,25 +240,6 @@ const Urls = {
 
   cm: {
     search: "/verification-service/validity/_search"
-  },
-
-  wt:{
-    create: "/request-service/water-tanker/v1/_create",
-    update: "/request-service/water-tanker/v1/_update",
-    search: "/request-service/water-tanker/v1/_search",
-  },
-  mt:{
-    create: "/request-service/mobile-toilet/v1/_create",
-    update: "/request-service/mobile-toilet/v1/_update",
-    search: "/request-service/mobile-toilet/v1/_search",
-  },
-
-  vendor: {
-    create: "/vendor-services/vendor/_create",
-    search: "/vendor-services/vendor/_search",
-    additionaldetailsCreate: "/vendor-management/api/v1/_create",
-    vendorcommonSearch: "/vendor-management/api/v1/vendorPlusAdditional/_search"
-    
   },
 
 digiLocker:{

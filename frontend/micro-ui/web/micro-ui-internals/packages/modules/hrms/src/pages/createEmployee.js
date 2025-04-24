@@ -1,10 +1,11 @@
-import { FormComposer, Toast ,Loader, Header} from "@nudmcdgnpm/digit-ui-react-components";
+import { FormComposer, Toast ,Loader, Header} from "@upyog/digit-ui-react-components";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { newConfig } from "../components/config/config";
 
 const CreateEmployee = () => {
+  console.log("Create Employeee ===============")
   const tenantId = Digit.ULBService.getCurrentTenantId();
   const [canSubmit, setSubmitValve] = useState(false);
   const [mobileNumber, setMobileNumber] = useState(null);
@@ -194,6 +195,7 @@ const CreateEmployee = () => {
     return <Loader />;
   }
   const config =mdmsData?.config?mdmsData.config: newConfig;
+  console.log("Config ======= : ",config)
   return (
     <div>
       <div style={isMobile ? {marginLeft: "-12px", fontFamily: "calibri", color: "#FF0000"} :{ marginLeft: "15px", fontFamily: "calibri", color: "#FF0000" }}>

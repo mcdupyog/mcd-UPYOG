@@ -1,4 +1,4 @@
-import { CitizenHomeCard, PTIcon } from "@nudmcdgnpm/digit-ui-react-components";
+import { CitizenHomeCard, PTIcon } from "@upyog/digit-ui-react-components";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouteMatch } from "react-router-dom";
@@ -25,7 +25,7 @@ import SvApplicationDetails from "./pages/citizen/SvApplicationDetails";
 import Caption from "./components/Caption";
 import ViewTimeline from "./components/ViewTimeline";
 import SVSpecialCategory from "./pageComponents/SVSpecialCategory";
-import RenewPopup from "./components/RenewPopup";
+
 
 const componentsToRegister = {
    Create:SVCreate,
@@ -45,8 +45,7 @@ const componentsToRegister = {
    SvApplicationDetails,
    Caption,
    ViewTimeline,
-   SVSpecialCategory,
-   RenewPopup
+   SVSpecialCategory
   };
   
   // function to register the component as per standard 

@@ -1,51 +1,9 @@
   import React, { useCallback, useMemo, useEffect,useRef,useState } from "react"
   import { useForm, Controller } from "react-hook-form";
-  import { TextInput, SubmitBar, LinkLabel, ActionBar, CloseSvg, DatePicker, CardLabelError, SearchForm, SearchField, Dropdown, Table, Card, MobileNumber, Loader, CardText, Header } from "@nudmcdgnpm/digit-ui-react-components";
+  import { TextInput, SubmitBar, LinkLabel, ActionBar, CloseSvg, DatePicker, CardLabelError, SearchForm, SearchField, Dropdown, Table, Card, MobileNumber, Loader, CardText, Header } from "@upyog/digit-ui-react-components";
   import { Link,useHistory} from "react-router-dom";
-  import CHBCancelBooking from "./CHBCancelBooking";
+   import CHBCancelBooking from "./CHBCancelBooking";
 
-  /**
- * CHBSearchApplication Component
- * 
- * This component is responsible for rendering the search functionality for CHB (Community Hall Booking) applications.
- * It allows users to search for applications based on various parameters such as date range, status, and other filters.
- * 
- * Props:
- * - `tenantId`: The tenant ID for which the search is being performed.
- * - `isLoading`: Boolean indicating whether the data is being loaded.
- * - `t`: Translation function for internationalization.
- * - `onSubmit`: Callback function triggered when the search form is submitted.
- * - `data`: The search results data.
- * - `count`: The total count of search results.
- * - `setShowToast`: Function to manage the visibility and content of toast notifications.
- * 
- * State Variables:
- * - `bookingDetails`: State variable to store the details of a selected booking.
- * - `showModal`: State variable to manage the visibility of the modal for booking details.
- * 
- * Hooks:
- * - `useForm`: React Hook Form hook for managing form state and validation.
- * - `useEffect`: Used to register default form values and trigger the initial search on component mount.
- * - `Digit.Hooks.chb.useChbCreateAPI`: Custom hook to handle API calls for creating CHB applications.
- * - `Digit.Hooks.chb.useChbCommunityHalls`: Custom hook to fetch the list of community halls for the CHB module.
- * 
- * Logic:
- * - Initializes the search form with default values, including:
- *    - `offset`: Pagination offset (default is 0).
- *    - `limit`: Number of results per page (default is 10 for desktop).
- *    - `sortBy`: Field to sort the results by (default is "commencementDate").
- *    - `sortOrder`: Sort order (default is "DESC").
- *    - `fromDate`: Default start date for the search (one month ago).
- *    - `toDate`: Default end date for the search (today's date).
- *    - `status`: Default status filter (e.g., "Booked").
- * - Automatically registers form fields and triggers the initial search on component mount.
- * - Fetches the list of community halls using the `useChbCommunityHalls` hook.
- * 
- * Returns:
- * - A search form with fields for date range, status, and other filters.
- * - Displays search results in a table format with pagination and sorting options.
- * - Includes a modal for viewing or managing booking details.
- */
   const CHBSearchApplication = ({tenantId, isLoading, t, onSubmit, data, count, setShowToast }) => {
     
       const isMobile = window.Digit.Utils.browser.isMobile();
@@ -70,7 +28,7 @@
       const [bookingDetails,setBookingDetails]=useState("");
       const [showModal,setShowModal] = useState(false)
       const mutation = Digit.Hooks.chb.useChbCreateAPI(tenantId, false);
-      const { data: Menu } = Digit.Hooks.chb.useChbCommunityHalls(tenantId, "CHB", "CommunityHalls");
+      const { data: Menu } = Digit.Hooks.chb.useChbCommunityHalls(tenantId, "CHB", "ChbCommunityHalls");
     
       let menu = [];
 
@@ -224,8 +182,9 @@
                         label={t("WF_TAKE_ACTION")}
                         onSubmit={toggleMenu}
                         disabled={
-                          !["BOOKED", "BOOKING_CREATED", "PAYMENT_FAILED", "PENDING_FOR_PAYMENT"].includes(application?.bookingStatus)
-                        } // Disable button if bookingStatus is not one of the allowed values
+                          application?.bookingStatus === "CANCELLED" ||
+                          application?.bookingStatus === "EXPIRED"
+                        } // Disable button
                       />
                       {isMenuOpen && (
                         <div
@@ -255,7 +214,7 @@
                           )}
             
                           {/* Action for Collect Payment */}
-                          {(application.bookingStatus === "BOOKING_CREATED" || application.bookingStatus === "PAYMENT_FAILED" || application.bookingStatus === "PENDING_FOR_PAYMENT") && (
+                          {application?.bookingStatus !== "BOOKED" && (
                             <div
                               onClick={() => handleMakePayment()}
                               style={{

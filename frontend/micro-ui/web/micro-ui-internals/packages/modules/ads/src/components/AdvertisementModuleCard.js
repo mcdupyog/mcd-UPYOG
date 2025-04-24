@@ -1,14 +1,5 @@
 import React, { useEffect } from 'react';
-
-/**
- * AdvertisementModuleCard Component
- *
- * Renders an advertisement card with details such as image, title, location, pole number, 
- * price, and lighting information. The component manages session storage parameters 
- * (`ADS_CREATE`) to persist selected ad details for booking or availability search.
- * - `handleViewAvailability`: Sets session storage with ad details and redirects to the search page.
- * - `useEffect`: Clears session storage on component mount to prevent stale data.
- */
+// this code shows the image and the detail of the advertisement
 
 const AdvertisementModuleCard = ({ imageSrc, title, location, poleNo, price, path, light,adType,faceArea }) => {
   const [params, setParams,clearParams] = Digit.Hooks.useSessionStorage("ADS_CREATE", {});

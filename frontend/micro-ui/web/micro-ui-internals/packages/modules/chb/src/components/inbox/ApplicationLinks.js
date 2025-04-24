@@ -1,4 +1,4 @@
-import { Card, ShippingTruck } from "@nudmcdgnpm/digit-ui-react-components";
+import { Card, ShippingTruck } from "@upyog/digit-ui-react-components";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -8,13 +8,13 @@ const ApplicationLinks = ({ linkPrefix, classNameForMobileView="" }) => {
 
   const allLinks = [
     {
-      text: "ES_NEW_COMMUNITY_HALL_BOOKING",
-      link: "/digit-ui/employee/chb/bookHall/searchhall",
+      text: t("ES_TITLE_NEW_REGISTRATION"),
+      link: "/digit-ui/employee/chb/bookHall/new-application",
     },
     {
-      text: "ES_COMMON_APPLICATION_SEARCH",
-      link: `/digit-ui/employee/chb/my-applications`,
-    }
+      text: t("ES_TITILE_SEARCH_APPLICATION"),
+      link: `${linkPrefix}/search`,
+    },
   ];
 
   const [links, setLinks] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useEffect,useRef,useState } from "react"
 import { useForm, Controller } from "react-hook-form";
-import { TextInput, SubmitBar, LinkLabel, ActionBar, CloseSvg, DatePicker, CardLabelError, SearchForm, SearchField, Dropdown, Table, Card, MobileNumber, Loader, CardText, Header } from "@nudmcdgnpm/digit-ui-react-components";
+import { TextInput, SubmitBar, LinkLabel, ActionBar, CloseSvg, DatePicker, CardLabelError, SearchForm, SearchField, Dropdown, Table, Card, MobileNumber, Loader, CardText, Header } from "@upyog/digit-ui-react-components";
 import { Link,useHistory} from "react-router-dom";
 import ADSCancelBooking from "./ADSCancelBooking";
 
@@ -35,7 +35,7 @@ const ADSSearchApplication = ({tenantId, isLoading, t, onSubmit, data, count, se
     const mutation = Digit.Hooks.ads.useADSCreateAPI(tenantId, false);
     // to do 
 
-    const { data: Face } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "Advertisement", [{ name: "FaceArea" }], {
+    const { data: Face } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "Advertisement", [{ name: "FaceArea" }], {
       select: (data) => {
         const formattedData = data?.["Advertisement"]?.["FaceArea"].map((details) => {
           return { i18nKey: `${details.name}`, code: `${details.code}`, name: `${details.name}`, active: `${details.active}` };

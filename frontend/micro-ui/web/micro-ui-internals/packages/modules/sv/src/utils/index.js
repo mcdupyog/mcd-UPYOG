@@ -1,30 +1,11 @@
 /**
  * @author - Shivank - NIUA
- * This component is developed for all the utility functions which are used in the whole application
+ * This componet is developed for all the utility functions which  are used in the whole 
+ * application.
  * I have already added the comments for each function.
  */
 
 
-
-/**
- * constants variable used across module so that i can change across the moduel from this place only
- * TODO: Use this logic across the module
- */
-export const UPYOG_CONSTANTS = {
-  MODULE_NAME :"StreetVending",
-  AM: "AM",
-  PM: "PM",
-  DOCUMENT:"CategoryDocument",
-  NOT_APPLICABLE:"NA",
-  renewalStatus:"EligibleToRenew"
-};
-
-export const RENEWAL_CONSTANTS = {
-  ELIGIBLE_TO_RENEW: "ELIGIBLE_TO_RENEW",
-  RENEW_IN_PROGRESS: "RENEW_IN_PROGRESS",
-  RENEW_APPLICATION_CREATED: "RENEW_APPLICATION_CREATED",
-  RENEWED: "RENEWED"
-}
 
 export const stringReplaceAll = (str = "", searcher = "", replaceWith = "") => {
     if (searcher == "") return str;
@@ -38,14 +19,9 @@ export const checkForNotNull = (value = "") => {
 };
 
 export const checkForNA = (value = "") => {
-  return checkForNotNull(value) ? value : UPYOG_CONSTANTS.NOT_APPLICABLE;
+  return checkForNotNull(value) ? value : "NA";
 };
 
-// Utility functions to convert string into integer and append AM and PM
-export const formatTime = (time) => {
-  const hour = parseInt(time);
-  return `${time} ${hour >= 12 ? UPYOG_CONSTANTS.PM : UPYOG_CONSTANTS.AM}`;
-};
 
 /**
  * This function processes an array of uploaded documents to create a list of unique document types,
@@ -107,7 +83,7 @@ export const transformDocuments = (documents) => {
   if (!Array.isArray(documents)) return [];
 
   // Retrieve and parse CategoryDocument from sessionStorage
-  const categoryDocument = sessionStorage.getItem(UPYOG_CONSTANTS.DOCUMENT);
+  const categoryDocument = sessionStorage.getItem("CategoryDocument");
   const parsedCategoryDocument = categoryDocument ? JSON.parse(categoryDocument) : null;
   // Transform existing documents
   const transformedDocs = documents.map(doc => ({
@@ -322,7 +298,6 @@ export const svPayloadData = (data) =>{
     applicationDate: 0,
     applicationId: "",
     applicationNo: "",
-    oldApplicationNo:sessionStorage.getItem("vendingApplicationID"),
     applicationStatus: "",
     approvalDate: 0,
     auditDetails: {
@@ -618,40 +593,6 @@ export const svUpdatePayload = (data) =>{
       ]
     }
   }
-  };
-  return formdata;
-}
-
-export const demandPayloadData = (data) => {
-  const formdata = {
-    streetVendingDetail: {
-      ...data,
-      renewalStatus: RENEWAL_CONSTANTS.RENEW_IN_PROGRESS,
-
-      workflow: {
-        action: "APPLY",
-        comments: "",
-        businessService: "street-vending",
-        moduleName: "sv-services",
-        businessService: "street-vending",
-        moduleName: "sv-services",
-        varificationDocuments: [
-          {
-            additionalDetails: {},
-            auditDetails: {
-              createdBy: "",
-              createdTime: 0,
-              lastModifiedBy: "",
-              lastModifiedTime: 0
-            },
-            documentType: "",
-            documentUid: "",
-            fileStoreId: "",
-            id: ""
-          }
-        ]
-      }
-    },
   };
   return formdata;
 }

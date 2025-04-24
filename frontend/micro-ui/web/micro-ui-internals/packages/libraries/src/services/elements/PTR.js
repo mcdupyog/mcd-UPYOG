@@ -1,12 +1,10 @@
-// Importing necessary modules and utilities
 import Urls from "../atoms/urls";
 import { Request } from "../atoms/Utils/Request";
 
 
- // Exporting the PTRService object which contains various methods for interacting with the PTR API
+ 
 export const PTRService = {
   
-  // Method to create a new PTR entry
   create: (details, tenantId) =>
     Request({
       url: Urls.ptr.create,
@@ -19,7 +17,6 @@ export const PTRService = {
       auth: true,
     }),
 
-  // Method to search for PTR entries based on filters
     search: ({ tenantId, filters, auth }) =>
     Request({
       url: Urls.ptr.search,
@@ -30,7 +27,6 @@ export const PTRService = {
       params: { tenantId, ...filters },
     }),
 
-// Method to update an existing PTR entry
     update: (details, tenantId) =>
     Request({
       url: Urls.ptr.update,
@@ -42,7 +38,6 @@ export const PTRService = {
       params: {},
       auth: true,
   }),
-  // Method to search for payment-related information
   paymentsearch: ({ tenantId, filters, auth }) =>
   Request({
     url: Urls.ptr.payment_search,
@@ -55,7 +50,7 @@ export const PTRService = {
 
  
  
-  // Method to fetch payment details for specific consumer codes
+
   fetchPaymentDetails: ({ tenantId, consumerCodes ,auth=true}) =>
     Request({
       url: Urls.ptr.fetch_payment_details,

@@ -1,24 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FormStep, TextInput, CardLabel, CardHeader, Dropdown, TextArea, CheckBox } from "@nudmcdgnpm/digit-ui-react-components";
+import { FormStep, TextInput, CardLabel, CardHeader, Dropdown, TextArea, CheckBox } from "@upyog/digit-ui-react-components";
 import { useForm, Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import Timeline from "../components/Timeline";
 
-/**
- * SVAdrressDetails Component
- * 
- * This component manages both permanent and correspondence address forms for street vendors.
- * It conditionally renders different address forms based on the URL path.
- * 
- * @param {Object} props Component properties
- * @param {Function} props.t - Translation function for internationalization
- * @param {Object} props.config - Configuration object for the form step
- * @param {Function} props.onSelect - Callback when form data is submitted
- * @param {String} props.userType - Type of user (citizen or employee)
- * @param {Object} props.formData - Existing form data
- * @param {Object} props.editdata - Data for editing mode
- * @param {Object} props.previousData - Previously saved data
- */
 const SVAdrressDetails = ({ t, config, onSelect, userType, formData,editdata,previousData }) => {
   const allCities = Digit.Hooks.sv.useTenants();
   const convertToObject = (String) => String ? { i18nKey: String, code: String, value: String } : null;

@@ -1,4 +1,4 @@
-import { Card, CardSubHeader, Header, LinkButton, Loader, Row, StatusTable, MultiLink, PopUp, Toast, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Card, CardSubHeader, Header, LinkButton, Loader, Row, StatusTable, MultiLink, PopUp, Toast, SubmitBar } from "@upyog/digit-ui-react-components";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
@@ -143,16 +143,6 @@ const SvApplicationDetails = () => {
               className="border-none"
               label={t("SV_APPLICATION_NUMBER")}
               text={streetVendingDetails?.applicationNo} 
-            />
-            <Row
-              className="border-none"
-              label={t("SV_VALIDITY_DATE")}
-              text={streetVendingDetails?.validityDate} 
-            />
-             <Row
-              className="border-none"
-              label={t("SV_CERTIFICATE_NUMBER")}
-              text={streetVendingDetails?.certificateNo} 
             />
           </StatusTable>
            

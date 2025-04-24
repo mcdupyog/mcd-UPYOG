@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApplicationTable from "./ApplicationTable";
-import { CardSubHeader, DeleteIcon, Modal } from "@nudmcdgnpm/digit-ui-react-components";
+import { CardSubHeader, DeleteIcon, Modal } from "@upyog/digit-ui-react-components";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 //Todo: Work in progress for cart details.
@@ -19,10 +19,8 @@ const CloseBtn = (props) => {
   );
 };
 /**
- * ADSCartDetails Component renders a modal displaying a table of advertisement cart items, 
- * including details like ad type, area, lighting, booking date, price, and status. 
- * Users can remove items from the cart, and the total price is dynamically calculated 
- * and shown at the bottom. The modal includes a header with a title and close button.
+ * ADSCartDetails component displays  a table of advertisement cart items,
+ * allowing users to view, delete items, and see the total price of the cart.
  */
 
 const ADSCartDetails = ({ onClose,cartDetails, setCartDetails }) => {

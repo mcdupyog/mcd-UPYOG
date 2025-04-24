@@ -22,7 +22,7 @@ frontend/micro-ui/web/package.json
 ```
 
 ```json
-"@nudmcdgnpm/digit-ui-react-components":"1.5.24",
+"@upyog/digit-ui-react-components":"1.5.24",
 ```
 
 then navigate to App.js
@@ -35,7 +35,7 @@ Syntax for importing any component;
 
 ```jsx
 import React, { Component } from "react";
-import MyComponent from "@nudmcdgnpm/digit-ui-react-components";
+import MyComponent from "@upyog/digit-ui-react-components";
 
 class Example extends Component {
   render() {
@@ -49,6 +49,10 @@ class Example extends Component {
 1.7.1 UPYOG base version
 ```
 
+### Contributors
+
+[jagankumar-egov] [nipunarora-eGov] [Tulika-eGov] [Ramkrishna-egov] [nabeelmd-eGov] [anil-egov] [vamshikrishnakole-wtt-egov] 
+
 ## Documentation
 
 Documentation Site (https://core.digit.org/guides/developer-guide/ui-developer-guide/digit-ui)
@@ -59,4 +63,7 @@ Documentation Site (https://core.digit.org/guides/developer-guide/ui-developer-g
 
 
 ### Published from UPYOG Frontend 
-UPYOG Frontend Repo (https://github.com/upyog/UPYOG/tree/develop)
+DIGIT Frontend Repo (https://github.com/upyog/UPYOG/tree/develop)
+
+
+![Logo](https://s3.ap-south-1.amazonaws.com/works-dev-asset/mseva-white-logo.png)

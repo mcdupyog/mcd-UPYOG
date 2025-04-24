@@ -1,4 +1,4 @@
-import { Banner, Card, CardText, LinkButton, LinkLabel, Loader, Row, StatusTable, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Banner, Card, CardText, LinkButton, LinkLabel, Loader, Row, StatusTable, SubmitBar } from "@upyog/digit-ui-react-components";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useRouteMatch } from "react-router-dom";
@@ -52,11 +52,9 @@ const NewResponse = ({ data, onSuccess }) => {
       
       data.tenantId = data.address?.city?.code;
       let formdata = Assetdata(data)
-      console.log("formdata in acknowejkfdlgi ::: ", formdata);
-
       
 
-
+      
       mutation.mutate(formdata, {
         onSuccess,
       });

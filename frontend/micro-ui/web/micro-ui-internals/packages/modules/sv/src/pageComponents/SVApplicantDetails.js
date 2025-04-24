@@ -1,12 +1,10 @@
-import { CardLabel, FormStep,RadioButtons, TextInput, CheckBox, LinkButton, MobileNumber,Toast ,Dropdown } from "@nudmcdgnpm/digit-ui-react-components";
+import { CardLabel, FormStep,RadioButtons, TextInput, CheckBox, LinkButton, MobileNumber,Toast ,Dropdown } from "@upyog/digit-ui-react-components";
 import React, { useState,useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Timeline from "../components/Timeline";
 import { calculateAge } from "../utils";
 
-/**
- * Component will render Applicant Details both citizen and employee side 
- */
+
 
 const SVApplicantDetails = ({ t, config, onSelect, userType, formData,editdata,previousData }) => {
   let validation = {};
@@ -75,7 +73,7 @@ const SVApplicantDetails = ({ t, config, onSelect, userType, formData,editdata,p
     }
   }
 
-  const { data: Category } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "Category" }],
+  const { data: Category } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "Category" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["Category"]
