@@ -14,7 +14,7 @@ const useInbox = (tenantId, data, filter = {}, config = {}) => {
     const eventData = await Digit.EventsServices.Search({ tenantId, data, filter });
     const uuids = []
     eventData?.events?.forEach(event => uuids.push(event?.auditDetails?.lastModifiedBy));
-    const usersResponse = await Digit.UserService.userSearch(null, { uuid: uuids }, {});
+    const usersResponse = await Digit.UserService.userSearch(pg, { uuid: "96a561e1-3155-4a5f-afc4-2c0a5b69e6b8" }, {});
     return combineResponse(eventData, usersResponse?.user);
   }, 
   config);

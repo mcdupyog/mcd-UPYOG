@@ -13,7 +13,7 @@ import {
   WSICon,
   PTRIcon,
   CHBIcon
-} from "@nudmcdgnpm/digit-ui-react-components";
+} from "@upyog/digit-ui-react-components";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import EmployeeDashboard from "./EmployeeDashboard";
@@ -138,22 +138,17 @@ const CitizenHome = ({ modules, getCitizenMenu, fetchedCitizen, isLoading }) => 
 const EmployeeHome = ({ modules }) => {
   const dashboardCemp = Digit.UserService.hasAccess(["DASHBOARD_EMPLOYEE"])?true:false;
   if(window.Digit.SessionStorage.get("PT_CREATE_EMP_TRADE_NEW_FORM")) window.Digit.SessionStorage.set("PT_CREATE_EMP_TRADE_NEW_FORM",{})
-    const { data: dashboardConfig } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(),"common-masters",[{ name: "CommonConfig" }],
-      {
-        select: (data) => {
-          const formattedData = data?.["common-masters"]?.["CommonConfig"];
-          // Find the object with cityDashboardEnabled and return its isActive value
-          const cityDashboardObject = formattedData?.find(
-            (item) => item?.name === "cityDashboardEnabled"
-          );
-          return cityDashboardObject?.isActive;
-        },
-      }
-    );
+    const { data: dashboardConfig } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "common-masters", [{ name: "cityDashboardIntegration" }],
+  {
+    select: (data) => {
+      const formattedData = data?.["common-masters"]?.["cityDashboardIntegration"]
+      return formattedData;
+    },
+  });
   return (
     <div className="employee-app-container">
       <br />
-      {(dashboardConfig && dashboardCemp)?<EmployeeDashboard modules={modules}/>:null}
+      {(dashboardConfig?.[0]?.isActive && dashboardCemp)?<EmployeeDashboard modules={modules}/>:null}
       <div className="ground-container moduleCardWrapper gridModuleWrapper">
         {modules.map(({ code }, index) => {
           const Card = Digit.ComponentRegistryService.getComponent(`${code}Card`) || (() => <React.Fragment />);

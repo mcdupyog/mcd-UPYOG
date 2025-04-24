@@ -1,20 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Header } from "@nudmcdgnpm/digit-ui-react-components";
+import { Header } from "@upyog/digit-ui-react-components";
 
 import SVDesktopInbox from "../../components/SVDesktopInbox";
 import MobileInbox from "../../components/MobileInbox";
-/**
- * The Inbox component serves as a controller for application inbox views, handling data fetching, filtering, searching, sorting, and pagination.
- * It conditionally renders either a mobile or desktop view based on the user's device.
- * 
- * Key features:
- * Adapts between mobile and desktop views based on screen size
- * Uses a data hook to fetch inbox data with configurable parameters
- * Manages pagination, sorting, and filtering state
- * Passes appropriate props to child components
- * Supports both new and legacy inbox APIs
- */
+
 const Inbox = ({
   useNewInboxAPI,
   parentRoute,

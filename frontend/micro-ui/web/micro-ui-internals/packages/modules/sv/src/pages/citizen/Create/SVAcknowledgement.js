@@ -1,4 +1,4 @@
-import { Banner, Card, CardText, LinkButton, LinkLabel, Loader, Row, StatusTable, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Banner, Card, CardText, LinkButton, LinkLabel, Loader, Row, StatusTable, SubmitBar } from "@upyog/digit-ui-react-components";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -26,9 +26,8 @@ import getSVAcknowledgementData from "../../../utils/getSVAcknowledgementData"
 
 const GetActionMessage = (props) => {
     const { t } = useTranslation();
-    const currentUrl = window.location.href;
     if (props.isSuccess) {
-      return currentUrl.includes("edit") ? t("SV_UPDATE_SUCCESSFULL"): currentUrl.includes("renew") ? t("SV_RENEW_SUCCESSFULL") : t("SV_SUBMIT_SUCCESSFULL");
+      return window.location.href.includes("edit") ? t("SV_UPDATE_SUCCESSFULL"): t("SV_SUBMIT_SUCCESSFULL");
     }
     else if (props.isLoading){
       return t("SV_APPLICATION_PENDING");
@@ -74,10 +73,6 @@ const SVAcknowledgement = ({ data, onSuccess }) => {
     } catch (err) {
     }
   }, []);
-
-  Digit.Hooks.useCustomBackNavigation({
-    redirectPath: '/digit-ui/citizen'
-  })
 
   const handleDownloadPdf = async () => {
     const { SVDetail = [] } = mutation.data;

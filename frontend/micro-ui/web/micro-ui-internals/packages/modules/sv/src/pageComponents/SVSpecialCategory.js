@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FormStep, TextInput, CardLabel,Dropdown, UploadFile,Toast} from "@nudmcdgnpm/digit-ui-react-components";
+import { FormStep, TextInput, CardLabel,Dropdown, UploadFile,Toast} from "@upyog/digit-ui-react-components";
 import { Controller, useForm } from "react-hook-form";
 import Timeline from "../components/Timeline";
 import { transformDocuments } from "../utils";
 
-/**
- * SVSpecialCategory Component
- * 
- * A form step component for collecting special category information for street vendors
- * Allows selection of disability status, social schemes, and uploading supporting documents
- */
 const SVSpecialCategory = ({ t, config, onSelect, userType, formData,editdata,previousData }) => {
   let validation = {};
   const user = Digit.UserService.getUser().info;
@@ -63,7 +57,7 @@ const SVSpecialCategory = ({ t, config, onSelect, userType, formData,editdata,pr
 
 
 
-  const { data: schemes } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "Schemes" }],
+  const { data: schemes } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "Schemes" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["Schemes"]
@@ -95,8 +89,7 @@ const SVSpecialCategory = ({ t, config, onSelect, userType, formData,editdata,pr
                     },
                   ];
               setUploadedFile(response.data.files[0].fileStoreId);
-              ownerCategory?.code!=="NONE"?sessionStorage.setItem("CategoryDocument", JSON.stringify(documentData)):null;
-            }
+              sessionStorage.setItem("CategoryDocument", JSON.stringify(documentData))}
                else {
               setError(t("CS_FILE_UPLOAD_ERROR"));
             }

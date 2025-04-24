@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown, RadioButtons, ActionBar, RemoveableTag, CloseSvg, CheckBox, Localities, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Dropdown, RadioButtons, ActionBar, RemoveableTag, CloseSvg, CheckBox, Localities, SubmitBar } from "@upyog/digit-ui-react-components";
 import { useQueryClient } from "react-query";
 import { useTranslation } from "react-i18next";
 
@@ -14,9 +14,10 @@ const Filter = ({ searchParams, onFilterChange, defaultSearchParams, statusMap, 
 
   const ApplicationTypeMenu = [
     {
-      label: "ES_NEW_COMMUNITY_HALL_BOOKING",
-      value: "booking-refund",
+      label: "CHB_NEW_REGISTRATION",
+      value: "chb",
     },
+    
   ];
 
   const localParamChange = (filterParam) => {
@@ -109,7 +110,7 @@ const Filter = ({ searchParams, onFilterChange, defaultSearchParams, statusMap, 
                 })}
               </div>
             </div>
-            {/* <div>
+            <div>
               <div className="filter-label" style={{ fontWeight: "normal" }}>
                 {t("ES_CHB_APP_TYPE")}
               </div>
@@ -140,7 +141,7 @@ const Filter = ({ searchParams, onFilterChange, defaultSearchParams, statusMap, 
                   }
                 }}
               />
-            </div> */}
+            </div>
             <div>
               <SubmitBar onSubmit={() => applyLocalFilters()} label={t("ES_COMMON_APPLY")} />
             </div>

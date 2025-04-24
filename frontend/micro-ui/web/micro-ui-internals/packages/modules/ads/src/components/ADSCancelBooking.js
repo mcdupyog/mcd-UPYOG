@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { Modal, Card,CheckBox} from "@nudmcdgnpm/digit-ui-react-components";
+import { Modal, Card,CheckBox} from "@upyog/digit-ui-react-components";
 import {useForm } from "react-hook-form";
 
 const Heading = (props) => {
@@ -21,11 +21,10 @@ const CloseBtn = (props) => {
     );
 };
 
-/** 
- * ADSCancelBooking Component d
- * This component is responsible for handling the cancellation of an ADS booking. 
- * This component ensures that the user explicitly acknowledges the cancellation before proceeding, enhancing user experience and preventing accidental cancellations.
- */
+
+/**ADSCancelBooking is used for cancellation of an ADS booking.This component displays a modal with a customizable title, close button, and actions 
+ * for canceling or saving the cancellation confirmation. . */
+
 
 const ADSCancelBooking = ({ t, closeModal, actionCancelLabel, actionCancelOnSubmit, actionSaveLabel, actionSaveOnSubmit,onSubmit }) => {
     const [agree, setAgree] = useState(false);

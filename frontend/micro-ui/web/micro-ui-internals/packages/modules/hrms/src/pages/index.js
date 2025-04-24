@@ -1,9 +1,12 @@
-import { PrivateRoute } from "@nudmcdgnpm/digit-ui-react-components";
+import { PrivateRoute } from "@upyog/digit-ui-react-components";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, Switch, useLocation } from "react-router-dom";
+import CreateEmployee from "./createEmployee";
 
 const EmployeeApp = ({ path, url, userType }) => {
+  console.log("=========== Path ", path);
+  console.log("=========== url :  ", url);
   const { t } = useTranslation();
   const location = useLocation();
   const mobileView = innerWidth <= 640;
@@ -17,8 +20,10 @@ const EmployeeApp = ({ path, url, userType }) => {
   const HRMSResponse = Digit?.ComponentRegistryService?.getComponent("HRMSResponse");
   const HRMSDetails = Digit?.ComponentRegistryService?.getComponent("HRMSDetails");
   const Inbox = Digit?.ComponentRegistryService?.getComponent("HRInbox");
-  const CreateEmployee = Digit?.ComponentRegistryService?.getComponent("HRCreateEmployee");
+  // const CreateEmployee = Digit?.ComponentRegistryService?.getComponent("HRCreateEmployee");
   const EditEmpolyee = Digit?.ComponentRegistryService?.getComponent("HREditEmpolyee");
+
+  console.log("OKKKKKKKKKKKKKK")
   return (
     <Switch>
       <React.Fragment>

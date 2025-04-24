@@ -1,16 +1,11 @@
-import { Header, MultiLink, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Header, MultiLink, SubmitBar } from "@upyog/digit-ui-react-components";
 import _ from "lodash";
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import ApplicationDetailsTemplate from "../../../../templates/ApplicationDetails";
 import getSVAcknowledgementData from "../../utils/getSVAcknowledgementData";
-/**
-* ApplicationDetails component displays the details of a CND application
-* It handles loading application data, workflow details, and provides necessary actions (Update Application)
-* 
-* @returns {JSX.Element} - Rendered component with application details
-*/
+
 
 const ApplicationDetails = () => {
   const { t } = useTranslation();

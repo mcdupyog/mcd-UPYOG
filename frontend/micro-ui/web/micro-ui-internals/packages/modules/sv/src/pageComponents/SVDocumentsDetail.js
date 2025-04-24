@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CardLabel, Dropdown, UploadFile, Toast, Loader, FormStep, LabelFieldPair } from "@nudmcdgnpm/digit-ui-react-components";
+import { CardLabel, Dropdown, UploadFile, Toast, Loader, FormStep, LabelFieldPair } from "@upyog/digit-ui-react-components";
 import Timeline from "../components/Timeline";
 
 
@@ -497,11 +497,8 @@ function SVDocuments({
             ) : uploadedFile ? "1 File Uploaded" : "No File Uploaded"}
             textStyles={{ width: "100%" }}
             inputStyles={{ width: "280px" }}
-            accept={
-              doc?.code?.replaceAll(".", "_") === "FAMILY_PHOTO"
-                ? ".jpeg, .jpg, .png"
-                : ".pdf, .jpeg, .jpg, .png"
-            }            buttonType="button"
+            accept=".pdf, .jpeg, .jpg, .png"
+            buttonType="button"
             error={!uploadedFile}
           />
         </div>

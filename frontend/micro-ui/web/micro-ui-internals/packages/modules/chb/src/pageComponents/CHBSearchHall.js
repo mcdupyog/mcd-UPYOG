@@ -12,40 +12,12 @@ import {
   Toast,
   InfoIcon,
   Card
-} from "@nudmcdgnpm/digit-ui-react-components";
+} from "@upyog/digit-ui-react-components";
 import { DateRangePicker, createStaticRanges } from "react-date-range";
 import { addDays, startOfDay, endOfDay, format, differenceInCalendarDays } from 'date-fns';
 import ChbCommunityHallDetails from "../components/ChbCommunityHallDetails";
 import BookingPopup from "../components/BookingPopup";
 
-/**
- * CommunityHallSearch Component
- * 
- * This component is responsible for rendering the search functionality for community halls in the CHB module.
- * It allows users to search for available community halls, select a hall, and view booking slot details.
- * 
- * Props:
- * - `t`: Translation function for internationalization.
- * - `onSelect`: Callback function triggered when the form step is completed.
- * - `config`: Configuration object for the form step.
- * - `userType`: Type of the user (e.g., employee or citizen).
- * - `formData`: Existing form data to prefill the fields.
- * 
- * State Variables:
- * - `bookingSlotDetails`: State variable to manage the booking slot details for the selected hall.
- * - `selectedHall`: State variable to manage the currently selected community hall.
- * - `Searchdata`: State variable to manage the search results for community halls.
- * - `existingDataSet`: State variable to manage any existing data related to the search or booking.
- * - `showModal`: State variable to manage the visibility of the booking popup modal.
- * 
- * Logic:
- * - Initializes the state variables using the `formData` object, allowing for prefilled data if available.
- * - Manages the search and selection of community halls, as well as the display of booking slot details.
- * - Handles the visibility of the booking popup modal for additional booking-related actions.
- * 
- * Returns:
- * - A form step component that allows users to search for and select community halls, view booking slot details, and proceed to the next step.
- */
 const CommunityHallSearch = ({ t, onSelect, config, userType, formData }) => {
   const { pathname: url } = useLocation();
   let index = 0;
@@ -83,8 +55,8 @@ const CommunityHallSearch = ({ t, onSelect, config, userType, formData }) => {
     endDate: null,
     key: 'selection'
   }]);
-  const { data: hallList } = Digit.Hooks.chb.useChbCommunityHalls(tenantId, "CHB", "CommunityHalls");
-  const { data: Hall } = Digit.Hooks.chb.useChbHallCode(tenantId, "CHB", "HallCode");
+  const { data: hallList } = Digit.Hooks.chb.useChbCommunityHalls(tenantId, "CHB", "ChbCommunityHalls");
+  const { data: Hall } = Digit.Hooks.chb.useChbHallCode(tenantId, "CHB", "ChbHallCode");
   let HallName = [];
   let HallId = [];
 

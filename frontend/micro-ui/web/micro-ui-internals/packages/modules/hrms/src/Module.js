@@ -33,6 +33,7 @@ export const HRMSModule = ({ stateCode, userType, tenants }) => {
     return null;
   }
   if (userType === "employee") {
+    console.log("================= User Type : ", userType)
     return <EmployeeApp path={path} url={url} />;
   } else return null;
 };

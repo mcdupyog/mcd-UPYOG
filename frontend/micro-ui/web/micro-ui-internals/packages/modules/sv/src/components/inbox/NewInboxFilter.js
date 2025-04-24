@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown, CloseSvg, SubmitBar } from "@nudmcdgnpm/digit-ui-react-components";
+import { Dropdown, CloseSvg, SubmitBar } from "@upyog/digit-ui-react-components";
 import { useQueryClient } from "react-query";
 import { useTranslation } from "react-i18next";
 
@@ -46,7 +46,7 @@ const Filter = ({ searchParams, onFilterChange, defaultSearchParams, statusMap, 
   ];
 
   // hook for fetching vending type data
-  const { data: vendingTypeData } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingActivityType" }],
+  const { data: vendingTypeData } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingActivityType" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["VendingActivityType"]
@@ -59,7 +59,7 @@ const Filter = ({ searchParams, onFilterChange, defaultSearchParams, statusMap, 
   })
 
   // hook for fetching vending zone data
-  const { data: vendingZone } = Digit.Hooks.useEnabledMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingZones" }],
+  const { data: vendingZone } = Digit.Hooks.useCustomMDMS(Digit.ULBService.getStateId(), "StreetVending", [{ name: "VendingZones" }],
     {
       select: (data) => {
         const formattedData = data?.["StreetVending"]?.["VendingZones"]

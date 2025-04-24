@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Loader, Card, KeyNote } from "@nudmcdgnpm/digit-ui-react-components";
+import { Loader, Card, KeyNote } from "@upyog/digit-ui-react-components";
 import { useTranslation } from "react-i18next";
 
-/**
- * ExistingBookingDetails fetches and displays existing booking applications.
- * useADSSearch to retrieve booking data.
- * useADSSlotSearch to fetch slot availability.
- * Populates session state with selected booking details.
- * Triggers `onSubmit` after session data is updated.
- */
+// The ExistingBookingDetails component displays a list of existing booking applications.
+// It allows users to view and select an existing booking for further actions.
 
 export const ExistingBookingDetails = ({ onSubmit,setExistingDataSet,Searchdata }) => {
   const { t } = useTranslation();
@@ -51,9 +46,6 @@ export const ExistingBookingDetails = ({ onSubmit,setExistingDataSet,Searchdata 
         houseNo: application?.address?.houseNo,
         streetName: application?.address?.streetName,
         landmark: application?.address?.landmark,
-        cityValue: {code:application?.address?.city, value:application?.address?.city, i18nKey:application?.address?.city, 
-          city:{name:application?.address?.city,code:application?.address?.cityCode}},
-        locality: {code:application?.address?.localityCode, value:application?.address?.locality, i18nKey:application?.address?.locality},
         addressline1 : application?.address?.addressLine1,
         addressline2 : application?.address?.addressLine2,
       },

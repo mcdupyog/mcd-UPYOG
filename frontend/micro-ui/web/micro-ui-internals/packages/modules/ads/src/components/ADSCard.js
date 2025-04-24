@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { EmployeeModuleCard,CHBIcon } from "@nudmcdgnpm/digit-ui-react-components";
+import { EmployeeModuleCard,CHBIcon } from "@upyog/digit-ui-react-components";
 
-/*
- * This component renders the Advertisement module card for the employee interface.
- * It provides quick access to relevant ADS functionalities based on user permissions. 
-*/
+
+// Component to render the ADS module card with relevant links and access control for employee side
+
 const ADSCard = () => {
   const { t } = useTranslation();
 

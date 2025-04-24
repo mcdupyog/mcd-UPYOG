@@ -3,11 +3,11 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const createProxy = createProxyMiddleware({
   //target: process.env.REACT_APP_PROXY_API || "https://uat.digit.org",
   // target: process.env.REACT_APP_PROXY_API || "https://qa.digit.org",
-  target: process.env.REACT_APP_PROXY_API || "https://qa.digit.org",
+  target: process.env.REACT_APP_PROXY_API || "https://mcdupyog.sparrowsoftech.in",
   changeOrigin: true,
 });
 const assetsProxy = createProxyMiddleware({
-  target: process.env.REACT_APP_PROXY_ASSETS || "https://qa.digit.org",
+  target: process.env.REACT_APP_PROXY_ASSETS || "https://mcdupyog.sparrowsoftech.in",
   changeOrigin: true,
 });
 module.exports = function (app) {
@@ -85,31 +85,16 @@ module.exports = function (app) {
     "/chb-services/booking/v1/_update",
     "/chb-services/booking/v1/_slot-search",
     "/chb-services/booking/v1/_estimate",
-    "/adv-services/booking/v1/_create", // API to create advertisement bookings
-    "/adv-services/booking/v1/_search", // API to search advertisement bookings
-    "/adv-services/booking/v1/_update", // API to update advertisement bookings
-    "/adv-services/booking/v1/_slot-search", // API to search available slots for advertisement bookings
-    "/adv-services/booking/v1/_estimate", // API to estimate costs for advertisement bookings
+    "/adv-services/booking/v1/_create",
+    "/adv-services/booking/v1/_search",
+    "/adv-services/booking/v1/_update",
+    "/adv-services/booking/v1/_slot-search",
+    "/adv-services/booking/v1/_estimate",
     "/employee-dashboard/_search",
     "/verification-service/validity/_search",
     "/asset-services/v1/assets/depreciation/_process",
     "/asset-services/v1/assets/depreciation/list",
-    "/asset-services/v1/disposal/_create",
-    "/request-service/water-tanker/v1/_create",
-    "/asset-services/maintenance/v1/_create",
-    "/asset-services/maintenance/v1/_update",
-    "/asset-services/maintenance/v1/_search",
-    "/asset-services/v1/disposal/_search",
-    "/asset-services/v1/assets/assignment/_search",
-    "/request-service/water-tanker/v1/_search",
-    "/request-service/water-tanker/v1/_update",
-    "/vendor-management/api/v1/_create",
-    "/sv-services/street-vending/_createdemand",
-    "/request-service/mobile-toilet/v1/_create",
-    "/request-service/mobile-toilet/v1/_update",
-    "/request-service/mobile-toilet/v1/_search",
-    "/vendor-management/api/v1/vendorPlusAdditional/_search"
-    
+    "/asset-services/v1/disposal/_create"
   ].forEach((location) => app.use(location, createProxy));
   ["/pb-egov-assets"].forEach((location) => app.use(location, assetsProxy));
 };

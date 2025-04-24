@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { CardLabel, TextInput,TextArea,Dropdown,FormStep } from "@nudmcdgnpm/digit-ui-react-components";  //imported all from our common library
+import { CardLabel, TextInput,TextArea,Dropdown,FormStep } from "@upyog/digit-ui-react-components";  //imported all from our common library
 
 /**
  * Common Address Details component so that developer can use it just by importing it accross the UPYOG.
@@ -37,14 +37,14 @@ const AddressDetails = ({t, config, onSelect, userType, formData,editdata,previo
   const { data: allCities, isLoading } = Digit.Hooks.useTenants();
   let validation = {};
   const user = Digit.UserService.getUser().info;
-  const [pincode, setPincode] = useState(formData?.address?.pincode || formData?.infodetails?.existingDataSet?.address?.pincode ||  "");
-  const [city, setCity] = useState(formData?.address?.city ||formData?.infodetails?.existingDataSet?.address?.cityValue || "");
-  const [locality, setLocality] = useState(formData?.address?.locality || formData?.infodetails?.existingDataSet?.address?.locality || "");
-  const [houseNo, setHouseNo] = useState(formData?.address?.houseNo || formData?.infodetails?.existingDataSet?.address?.houseNo ||"");
-  const [streetName, setstreetName] = useState(formData?.address?.streetName ||formData?.infodetails?.existingDataSet?.address?.streetName ||"");
-  const [landmark, setLandmark] = useState(formData?.address?.landmark ||formData?.infodetails?.existingDataSet?.address?.landmark || "");
-  const [addressLine1, setAddressLine1] = useState(formData?.address?.addressLine1 || formData?.infodetails?.existingDataSet?.address?.addressline1 || "");
-  const [addressLine2, setAddressLine2] = useState(formData?.address?.addressLine2 || formData?.infodetails?.existingDataSet?.address?.addressline2 || "");
+  const [pincode, setPincode] = useState(formData?.address?.pincode || "");
+  const [city, setCity] = useState(formData?.address?.city || "");
+  const [locality, setLocality] = useState(formData?.address?.locality || "");
+  const [houseNo, setHouseNo] = useState(formData?.address?.houseNo || "");
+  const [streetName, setstreetName] = useState(formData?.address?.streetName || "");
+  const [landmark, setLandmark] = useState(formData?.address?.landmark || "");
+  const [addressLine1, setAddressLine1] = useState(formData?.address?.addressLine1 || "");
+  const [addressLine2, setAddressLine2] = useState(formData?.address?.addressLine2 || "");
   const { control } = useForm();
   const inputStyles = {width:user.type === "EMPLOYEE" ? "50%" : "86%"};
   
