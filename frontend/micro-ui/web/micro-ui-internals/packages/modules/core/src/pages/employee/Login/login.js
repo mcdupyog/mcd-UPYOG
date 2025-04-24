@@ -85,9 +85,8 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
       if (zone) {
         Digit.SessionStorage.set("Employee.zone", zone);
       }
-      const zon = Digit.SessionStorage.get("Employee.zone");
-      // alert(zon);
-      
+      //const zon = Digit.SessionStorage.get("Employee.zone");
+
       setUser({ info, ...tokens });
     } catch (err) {
       setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
