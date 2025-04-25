@@ -39,20 +39,20 @@ const Urls = {
     search: "/fsm/v1/_search",
     create: "/fsm/v1/_create",
     update: "/fsm/v1/_update",
-    vendorSearch: "http://192.168.1.151:8070/vendor/v1/_search",
-    vehicleSearch: "http://192.168.1.151:8061/vehicle/v1/_search",
+    vendorSearch: "/vendor/v1/_search",
+    vehicleSearch: "/vehicle/v1/_search",
     audit: "/fsm/v1/_audit",
-    vehicleTripSearch: "http://192.168.1.151:8061/vehicle/trip/v1/_search",
+    vehicleTripSearch: "/vehicle/trip/v1/_search",
     billingSlabSearch: "/fsm-calculator/v1/billingSlab/_search",
-    vehilceUpdate: "http://192.168.1.151:8061/vehicle/trip/v1/_update",
-    createVendor: "http://192.168.1.151:8070/vendor/v1/_create",
-    updateVendor: "http://192.168.1.151:8070/vendor/v1/_update",
-    createVehicle: "http://192.168.1.151:8061/vehicle/v1/_create",
-    updateVehicle: "http://192.168.1.151:8061/vehicle/v1/_update",
-    driverSearch: "http://192.168.1.151:8070/vendor/driver/v1/_search",
-    createDriver: "http://192.168.1.151:8070/vendor/driver/v1/_create",
-    updateDriver: "http://192.168.1.151:8070/vendor/driver/v1/_update",
-    vehicleTripCreate: "http://192.168.1.151:8061/vehicle/trip/v1/_create",
+    vehilceUpdate: "/vehicle/trip/v1/_update",
+    createVendor: "/vendor/v1/_create",
+    updateVendor: "/vendor/v1/_update",
+    createVehicle: "/vehicle/v1/_create",
+    updateVehicle: "/vehicle/v1/_update",
+    driverSearch: "/vendor/driver/v1/_search",
+    createDriver: "/vendor/driver/v1/_create",
+    updateDriver: "/vendor/driver/v1/_update",
+    vehicleTripCreate: "/vehicle/trip/v1/_create",
     advanceBalanceCalculate: "/fsm-calculator/v1/_advancebalancecalculate",
   },
 
@@ -103,8 +103,8 @@ const Urls = {
 
 
   dss: {
-    dashboardConfig: "http://192.168.1.151:8280/dashboard-analytics/dashboard/getDashboardConfig",
-    getCharts: "http://192.168.1.151:8280/dashboard-analytics/dashboard/getChartV2",
+    dashboardConfig: "/dashboard-analytics/dashboard/getDashboardConfig",
+    getCharts: "/dashboard-analytics/dashboard/getChartV2",
   },
 
   mcollect: {
@@ -120,10 +120,10 @@ const Urls = {
     count: "/echallan-services/eChallan/v1/_count",
   },
   hrms: {
-    search: "http://192.168.1.151:9999/egov-hrms/employees/_search",
-    count: "http://192.168.1.151:9999/egov-hrms/employees/_count",
-    create: "http://192.168.1.151:9999/egov-hrms/employees/_create",
-    update: "http://192.168.1.151:9999/egov-hrms/employees/_update",
+    search: "/egov-hrms/employees/_search",
+    count: "/egov-hrms/employees/_count",
+    create: "/egov-hrms/employees/_create",
+    update: "/egov-hrms/employees/_update",
   },
   tl: {
     create: "/tl-services/v1/_create",
@@ -136,7 +136,7 @@ const Urls = {
   receipts: {
     receipt_download: "/egov-pdf/download/PAYMENT/consolidatedreceipt",
     payments: "/collection-services/payments",
-    count: "http://192.168.1.151:9999/egov-hrms/employees/_count",
+    count: "/egov-hrms/employees/_count",
   },
   obps: {
     scrutinyDetails: "/edcr/rest/dcr/scrutinydetails",
