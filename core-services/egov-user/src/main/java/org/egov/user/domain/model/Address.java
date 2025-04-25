@@ -6,6 +6,7 @@ import org.egov.user.domain.model.enums.AddressType;
 
 import java.util.Date;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
