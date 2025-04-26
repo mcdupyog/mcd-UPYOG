@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Background from "../../../components/Background";
 import Header from "../../../components/Header";
-import HrmsService from "@upyog/digit-ui-libraries/src/services/elements/HRMS";
+import HrmsService from "../../../../../../libraries/src/services/elements/HRMS";
 
 /* set employee details to enable backward compatiable */
 const setEmployeeDetail = (userObject, token) => {
