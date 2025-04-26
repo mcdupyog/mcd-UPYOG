@@ -63,7 +63,7 @@
     "buildD:mcollect": "cd packages/modules/mCollect && yarn build",
     "buildD:receipts": "cd packages/modules/receipts && yarn build",
     "buildD:tl": "cd packages/modules/tl && yarn build",
-    "buildD:hrms": "cd packages/modules/hrms && yarn build",
+    "build:hrms": "cd packages/modules/hrms && yarn build",
     "buildD:obps": "cd packages/modules/obps && yarn build",
     "build:engagement": "cd packages/modules/engagement && yarn build",
     "buildD:noc": "cd packages/modules/noc && yarn build",
