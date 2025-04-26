@@ -76,11 +76,7 @@ const enabledModules = [
   "Birth",
   "Death",
   "PTR",
-  "ASSET",
-  "ADS",
-  "SV",
-  "EW",
-  "CHB"
+  "ASSET"
 ];
 
 const initTokens = (stateCode) => {

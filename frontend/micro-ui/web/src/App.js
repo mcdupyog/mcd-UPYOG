@@ -84,13 +84,7 @@ const enabledModules = [
   "Death",
   "PTR",
   "ASSET",
-  "ADS",
-  "SV",
-  "EW",
-  "CHB",
-  "WT",
-  "VENDOR",
-  "MT"
+  "VENDOR"
 ];
 window.Digit.ComponentRegistryService.setupRegistry({
   ...paymentConfigs,
