@@ -78,6 +78,9 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
       const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
       Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
 
+      setUser({ info, ...tokens });
+    
+      Digit.UserService.setUser({ info, ...tokens });
       const hrmsResponse = await HrmsService.search(info?.tenantId, { codes: info?.userName });
 
       const employee = hrmsResponse?.Employees?.[0];
@@ -89,7 +92,6 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
       //alert(zon);
       
       // alert("Login Successful Umesh Bro !")
-      setUser({ info, ...tokens });
     } catch (err) {
       setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
       setTimeout(closeToast, 5000);
