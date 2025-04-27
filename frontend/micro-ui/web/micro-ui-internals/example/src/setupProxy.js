@@ -3,11 +3,11 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const createProxy = createProxyMiddleware({
   //target: process.env.REACT_APP_PROXY_API || "https://uat.digit.org",
   // target: process.env.REACT_APP_PROXY_API || "https://qa.digit.org",
-  target: process.env.REACT_APP_PROXY_API || "https://qa.digit.org",
+  target: process.env.REACT_APP_PROXY_API || "https://mcdupyog.sparrowsoftech.in",
   changeOrigin: true,
 });
 const assetsProxy = createProxyMiddleware({
-  target: process.env.REACT_APP_PROXY_ASSETS || "https://qa.digit.org",
+  target: process.env.REACT_APP_PROXY_ASSETS || "https://mcdupyog.sparrowsoftech.in",
   changeOrigin: true,
 });
 module.exports = function (app) {
