@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Background from "../../../components/Background";
 import Header from "../../../components/Header";
+import HrmsService from "../../../../../../libraries/src/services/elements/HRMS";
 
 /* set employee details to enable backward compatiable */
 const setEmployeeDetail = (userObject, token) => {
@@ -77,6 +78,19 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
       const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
       Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
       setUser({ info, ...tokens });
+    
+      Digit.UserService.setUser({ info, ...tokens });
+      const hrmsResponse = await HrmsService.search(info?.tenantId, { codes: info?.userName });
+
+      const employee = hrmsResponse?.Employees?.[0];
+      const zone = employee?.jurisdictions?.[0]?.zone;
+      if (zone) {
+        Digit.SessionStorage.set("Employee.zone", zone);
+      }
+      const zon = Digit.SessionStorage.get("Employee.zone");
+      //alert(zon);
+      
+      // alert("Login Successful Umesh Bro !")
     } catch (err) {
       setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
       setTimeout(closeToast, 5000);
