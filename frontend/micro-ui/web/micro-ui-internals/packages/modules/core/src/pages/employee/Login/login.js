@@ -61,42 +61,51 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
     history.replace(redirectPath);
   }, [user]);
 
-  const onLogin = async (data) => {
-    if (!data.city) {
-      alert("Please Select City!");
-      return;
+const fetchHRMSData = async (tenantId, userName) => {
+  try {
+    const data = await Digit.HRMSService.search(tenantId, { codes: userName });
+    const employee = data?.Employees?.[0];
+    const zone = employee?.jurisdictions?.[0]?.zone;
+    if (zone) {
+      Digit.SessionStorage.set("Employee.zone", zone);
     }
-    setDisable(true);
+  } catch (error) {
+    console.error("HRMS fetch failed", error);
+  }
+};
 
-    const requestData = {
-      ...data,
-      userType: "EMPLOYEE",
-    };
-    requestData.tenantId = data.city.code;
-    delete requestData.city;
-    try {
-      const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
-      Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
-      setUser({ info, ...tokens });
-    
-      Digit.UserService.setUser({ info, ...tokens });
-      const hrmsResponse = await HrmsService.search(info?.tenantId, { codes: info?.userName });
 
-      const employee = hrmsResponse?.Employees?.[0];
-      const zone = employee?.jurisdictions?.[0]?.zone;
-      if (zone) {
-        Digit.SessionStorage.set("Employee.zone", zone);
-      }
-      const zon = Digit.SessionStorage.get("Employee.zone");
-      //alert(zon);
-      
-      // alert("Login Successful Umesh Bro !")
-    } catch (err) {
-      setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
-      setTimeout(closeToast, 5000);
-    }
-    setDisable(false);
+const onLogin = async (data) => {
+  if (!data.city) {
+    alert("Please Select City!");
+    return;
+  }
+
+  setDisable(true);
+
+  const requestData = {
+    ...data,
+    userType: "EMPLOYEE",
+    tenantId: data.city.code,
   };
+  delete requestData.city;
+
+  try {
+    const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
+    Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
+    setUser({ info, ...tokens });
+
+    await fetchHRMSData(info?.tenantId, info?.userName); // call hrms for zone
+
+  } catch (err) {
+    setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
+    setTimeout(closeToast, 5000);
+  }
+
+  setDisable(false);
+};
+
+
 
   const closeToast = () => {
     setShowToast(null);
