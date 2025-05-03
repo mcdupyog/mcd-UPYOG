@@ -186,109 +186,59 @@ function Jurisdiction({
     setjurisdictions((pre) => pre.map((item) => (item.key === jurisdiction.key ? { ...item, boundary: value } : item)));
   };
 
-  // added by umesh ============================
-
-  // const zoneOptions = data?.MdmsRes?.["egov-location"]?.TenantBoundary?.[0]?.boundary?.children?.map((zone) => ({
-  //   code: zone.code,
-  //   i18text: zone.name || zone.code
-  //   // i18text: Digit.Utils.locale.convertToLocale(zone.code, 'EGOV_LOCATION_ZONE') // Optional: use `Digit.Utils.locale.convertToLocale(zone.code, 'EGOV_LOCATION_ZONE')` for i18n
-  // })) || [];
+  // added by umesh================
 
   const [zoneOptions, setZoneOptions] = useState([]);
   
-
-  const fetchZonesForBoundary = async (tenantId) => {
-    try {
-      const requestBody = {
-        RequestInfo: {
-          apiId: "Rainmaker",
-          authToken: Digit.UserService?.getUser()?.access_token|| "",
-          msgId: `${Date.now()}|en_IN`,
-          plainAccessRequest: {},
-        },
-        MdmsCriteria: {
-          tenantId,
-          moduleDetails: [
-            {
-              moduleName: "egov-location",
-              masterDetails: [
-                {
-                  name: "TenantBoundary",
-                },
-              ],
-            },
-          ],
-        },
-      };
+  const tenantId = jurisdiction?.boundary?.code;
   
-      const response = await fetch(
-        `/egov-mdms-service/v1/_search?tenantId=${tenantId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-  
-      const data = await response.json();
-      // console.log("Api Data : ",data);
-      // Assuming zones are inside children of boundary
-      const zones = data?.MdmsRes?.["egov-location"]?.TenantBoundary?.[0]?.boundary?.children || [];
-
-
-      console.log("Zone : ",zones);
-      return zones.map((zone) => ({
-        code: zone.code,
-        i18text: zone.name || zone.code,
-      }));
-    } catch (err) {
-      console.error("Error fetching zones:", err);
-      return [];
+  const { data: zoneMdmsData = [], isLoading: isZoneLoading } = Digit.Hooks.useCustomMDMS(
+    tenantId,
+    "egov-location",
+    [
+      {
+        name: "TenantBoundary"
+      }
+    ],
+    {
+      select: (data) => {
+        const zones = data?.["egov-location"]?.TenantBoundary?.[0]?.boundary?.children || [];
+        return zones.map((zone) => ({
+          code: zone.code,
+          i18text: zone.name || zone.code
+        }));
+      },
+      enabled: !!tenantId,
     }
-  };
-
+  );
   
   useEffect(() => {
-    const loadZones = async () => {
-      if (jurisdiction?.boundary?.code) {
-        const zones = await fetchZonesForBoundary(jurisdiction.boundary.code);
-        setZoneOptions(zones);
+    if (zoneMdmsData.length > 0) {
+      setZoneOptions(zoneMdmsData);
   
-        const isZoneStillValid = zones.some(
-          (zone) => zone.code === jurisdiction.zone?.code
-        );
+      const isZoneStillValid = zoneMdmsData.some(
+        (zone) => zone.code === jurisdiction.zone?.code
+      );
   
-        if (!isZoneStillValid) {
-          setjurisdictions((prev) =>
-            prev.map((item) =>
-              item.key === jurisdiction.key
-                ? { ...item, zone: null }
-                : item
-            )
-          );
-        }
-      } else {
-        setZoneOptions([]);
+      if (!isZoneStillValid) {
         setjurisdictions((prev) =>
           prev.map((item) =>
-            item.key === jurisdiction.key
-              ? { ...item, zone: null }
-              : item
+            item.key === jurisdiction.key ? { ...item, zone: null } : item
           )
         );
       }
-    };
-  
-    loadZones();
-  }, [jurisdiction?.boundary?.code]); // Only re-run when actual boundary code changes
-  
-  
+    } else {
+      setZoneOptions([]);
+      setjurisdictions((prev) =>
+        prev.map((item) =>
+          item.key === jurisdiction.key ? { ...item, zone: null } : item
+        )
+      );
+    }
+  }, [zoneMdmsData, jurisdiction.key]);
   
 
-  
-  // ========================================================== ===================
+  // ==========================================================end ===================
 
   const selectrole = (e, data) => {
     // const index = jurisdiction?.roles.filter((ele) => ele.code == data.code);
