@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Background from "../../../components/Background";
 import Header from "../../../components/Header";
-import HrmsService from "../../../../../../libraries/src/services/elements/HRMS";
 
 /* set employee details to enable backward compatiable */
 const setEmployeeDetail = (userObject, token) => {
@@ -61,19 +60,6 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
     history.replace(redirectPath);
   }, [user]);
 
-const fetchHRMSData = async (tenantId, userName) => {
-  try {
-    const data = await Digit.HRMSService.search(tenantId, { codes: userName });
-    const employee = data?.Employees?.[0];
-    const zone = employee?.jurisdictions?.[0]?.zone;
-    if (zone) {
-      Digit.SessionStorage.set("Employee.zone", zone);
-    }
-  } catch (error) {
-    console.error("HRMS fetch failed", error);
-  }
-};
-
 
 const onLogin = async (data) => {
   if (!data.city) {
@@ -94,8 +80,6 @@ const onLogin = async (data) => {
     const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
     Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
     setUser({ info, ...tokens });
-
-    await fetchHRMSData(info?.tenantId, info?.userName); // call hrms for zone
 
   } catch (err) {
     setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
