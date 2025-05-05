@@ -61,33 +61,29 @@ const Login = ({ config: propsConfig, t, isDisabled }) => {
   }, [user]);
 
 
-const onLogin = async (data) => {
-  if (!data.city) {
-    alert("Please Select City!");
-    return;
-  }
+  const onLogin = async (data) => {
+    if (!data.city) {
+      alert("Please Select City!");
+      return;
+    }
+    setDisable(true);
 
-  setDisable(true);
-
-  const requestData = {
-    ...data,
-    userType: "EMPLOYEE",
-    tenantId: data.city.code,
+    const requestData = {
+      ...data,
+      userType: "EMPLOYEE",
+    };
+    requestData.tenantId = data.city.code;
+    delete requestData.city;
+    try {
+      const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
+      Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
+      setUser({ info, ...tokens });
+    } catch (err) {
+      setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
+      setTimeout(closeToast, 5000);
+    }
+    setDisable(false);
   };
-  delete requestData.city;
-
-  try {
-    const { UserRequest: info, ...tokens } = await Digit.UserService.authenticate(requestData);
-    Digit.SessionStorage.set("Employee.tenantId", info?.tenantId);
-    setUser({ info, ...tokens });
-
-  } catch (err) {
-    setShowToast(err?.response?.data?.error_description || "Invalid login credentials!");
-    setTimeout(closeToast, 5000);
-  }
-
-  setDisable(false);
-};
 
 
 
