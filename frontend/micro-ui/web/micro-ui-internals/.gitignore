@@ -2,7 +2,6 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,react
 
 ### eGov ###
-packages/css/example/index.css
 package-lock.json
 locales/
 build/
