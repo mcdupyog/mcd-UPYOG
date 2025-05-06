@@ -76,7 +76,7 @@ public class AssetService {
         enrichmentService.enrichAssetCreateRequest(assetRequest, mdmsData);
 
         // Update the workflow for asset creation
-        // workflowService.updateWorkflow(assetRequest, CreationReason.CREATE);
+        workflowService.updateWorkflow(assetRequest, CreationReason.CREATE);
 
         // Save the asset data to the repository
         assetRepository.save(assetRequest);
