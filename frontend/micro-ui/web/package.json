@@ -9,11 +9,7 @@
     "micro-ui-internals/packages/modules/core",
     "micro-ui-internals/packages/modules/common",
     "micro-ui-internals/packages/modules/dss",
-    "micro-ui-internals/packages/modules/engagement",
     "micro-ui-internals/packages/modules/asset",
-    "micro-ui-internals/packages/modules/vendor",
-    "micro-ui-internals/packages/modules/sv",
-    "micro-ui-internals/packages/modules/wt",
     "micro-ui-internals/packages/modules/hrms"
   ],
   "engines": {
