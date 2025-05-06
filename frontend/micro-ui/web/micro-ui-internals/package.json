@@ -14,8 +14,7 @@
     "packages/modules/asset",
     "packages/modules/vendor",
     "packages/modules/sv",
-    "packages/modules/wt",
-    "packages/modules/hrms"
+    "packages/modules/wt"
   ],
   "license": "MIT",
   "private": true,
