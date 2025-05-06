@@ -109,6 +109,7 @@ const TopBar = ({
             <p className="ulb" style={mobileView ? { fontSize: "14px", display: "inline-block" } : {}}>
               {t(cityDetails?.i18nKey).toUpperCase()}{" "}
               {t(`ULBGRADE_${cityDetails?.city?.ulbGrade.toUpperCase().replace(" ", "_").replace(".", "_")}`).toUpperCase()}
+              {` - CENTRAL ZONE`}
             </p>
           ) : (
             <img className="state" src={logoUrl} />
