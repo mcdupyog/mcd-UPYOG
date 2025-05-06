@@ -73,7 +73,7 @@ public class AssetService {
         assetValidator.validateCreate(assetRequest, mdmsData);
 
         // Enrich the asset creation request with necessary details
-        enrichmentService.enrichAssetCreateRequest(assetRequest, mdmsData);
+        // enrichmentService.enrichAssetCreateRequest(assetRequest, mdmsData);
 
         // Update the workflow for asset creation
         workflowService.updateWorkflow(assetRequest, CreationReason.CREATE);
