@@ -1,8 +1,7 @@
 {
-  "name": "@nudmcdgnpm/digit-ui-module-hrms",
+  "name": "@mcd89/digit-ui-module-hrms",
   "version": "1.2.2",
   "description": "Digit HRMS Module",
-
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
