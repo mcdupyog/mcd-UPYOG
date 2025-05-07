@@ -7,7 +7,8 @@
     "packages/css",
     "example",
     "packages/react-components",
-    "packages/modules/core"
+    "packages/modules/core",
+    "packages/modules/dss"
   ],
   "license": "MIT",
   "private": true,
@@ -60,7 +61,7 @@
     "build:core": "cd packages/modules/core && yarn build",
     "buildD:pgr": "cd packages/modules/pgr && yarn build",
     "buildD:fsm": "cd packages/modules/fsm && yarn build",
-    "buildD:dss": "cd packages/modules/dss && yarn build",
+    "build:dss": "cd packages/modules/dss && yarn build",
     "buildD:mcollect": "cd packages/modules/mCollect && yarn build",
     "buildD:receipts": "cd packages/modules/receipts && yarn build",
     "buildD:tl": "cd packages/modules/tl && yarn build",
