@@ -22,7 +22,7 @@ import { initLibraries } from "@nudmcdgnpm/digit-ui-libraries";
 import {
   HRMSModule,
   initHRMSComponents,
-} from "@nudmcdgnpm/digit-ui-module-hrms";
+} from "@mcd89/digit-ui-module-hrms";
 import {
   TLModule,
   TLLinks,
