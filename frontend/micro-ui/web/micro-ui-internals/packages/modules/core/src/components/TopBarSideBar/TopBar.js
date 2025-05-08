@@ -26,10 +26,12 @@ const TopBar = ({
   setSideBarScrollTop,
 }) => {
   const [profilePic, setProfilePic] = React.useState(null);
-
+  const [zoneName, setZoneName] = React.useState(null);
   React.useEffect(async () => {
     const tenant = Digit.ULBService.getCurrentTenantId();
     const uuid = userDetails?.info?.uuid;
+    const zone = Digit.SessionStorage.get("Employee.zone");
+    setZoneName(zone);
     if (uuid) {
       const usersResponse = await Digit.UserService.userSearch(tenant, { uuid: [uuid] }, {});
       if (usersResponse && usersResponse.user && usersResponse.user.length) {
@@ -110,6 +112,7 @@ const TopBar = ({
             <p className="ulb" style={mobileView ? { fontSize: "14px", display: "inline-block" } : {}}>
               {t(cityDetails?.i18nKey).toUpperCase()}{" "}
               {t(`ULBGRADE_${cityDetails?.city?.ulbGrade.toUpperCase().replace(" ", "_").replace(".", "_")}`).toUpperCase()}
+              {zoneName ? ` - ${t(`TENANT_${zoneName}`).toUpperCase()}` : ""}
             </p>
           ) : (
             <img className="state" src={logoUrl} />
