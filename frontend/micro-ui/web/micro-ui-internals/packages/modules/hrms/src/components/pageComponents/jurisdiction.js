@@ -60,6 +60,7 @@ const Jurisdictions = ({ t, config, onSelect, userType, formData }) => {
         hierarchy: null,
         boundaryType: null,
         boundary: null,
+        zone: null,
         roles: [],
       },
     ]);
@@ -71,6 +72,7 @@ const Jurisdictions = ({ t, config, onSelect, userType, formData }) => {
         hierarchy: unit?.hierarchy?.code,
         boundaryType: unit?.boundaryType?.label,
         boundary: unit?.boundary?.code,
+        zone: unit?.zone?.code,
         tenantId: unit?.boundary?.code,
         auditDetails: unit?.auditDetails,
         isdeleted: true,
@@ -230,7 +232,7 @@ function Jurisdiction({
 
   zoneMdmsData &&
     zoneMdmsData.map((data) => {
-      zoneData.push({ i18text: `${data.code}`, code: `${data.code}`, value: `${data.code}` });
+      zoneData.push({ i18text: `TENANT_${data.code}`, code: `${data.code}`, value: `${data.code}` });
     });
 
   // ==========================================================end ===================
@@ -319,7 +321,6 @@ function Jurisdiction({
             option={Boundary}
             select={(value) => {
               selectedboundary(value);
-
               setjurisdictions((prev) => prev.map((item) => (item.key === jurisdiction.key ? { ...item, boundary: value, zone: null } : item)));
             }}
             optionKey="i18text"
@@ -333,7 +334,7 @@ function Jurisdiction({
           <Dropdown
             className="form-field"
             isMandatory={true}
-            selected={jurisdiction.zone}
+            selected={jurisdiction?.zone}
             disable={zoneData.length === 0}
             option={zoneData}
             select={(value) => setjurisdictions((prev) => prev.map((item) => (item.key === jurisdiction.key ? { ...item, zone: value } : item)))}
