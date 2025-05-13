@@ -8,6 +8,7 @@ import { MCollectModule, MCollectLinks } from "@upyog/digit-ui-module-mcollect";
 // import { TLModule, TLLinks } from "@upyog/digit-ui-module-tl";
 import { initFSMComponents } from "@upyog/digit-ui-module-fsm";
 import { initPGRComponents } from "@nudmcdgnpm/digit-ui-module-pgr";
+import { initFinanceComponents } from "@mcd89/digit-ui-module-finance";
 import { initDSSComponents } from "@upyog/digit-ui-module-dss";
 import { initHRMSComponents } from "@mcd89/digit-ui-module-hrms";
 import { initReceiptsComponents, ReceiptsModule } from "@upyog/digit-ui-module-receipts";
@@ -16,6 +17,7 @@ import { initMCollectComponents } from "@upyog/digit-ui-module-mcollect";
 import { initTLComponents } from "@upyog/digit-ui-module-tl";
 import { PaymentModule, PaymentLinks, paymentConfigs } from "@upyog/digit-ui-module-common";
 import { HRMSModule } from "@mcd89/digit-ui-module-hrms";
+import { FinanceModule } from "@mcd89/digit-ui-module-finance";
 import { initOBPSComponents } from "@upyog/digit-ui-module-obps";
 import { initEngagementComponents } from "@upyog/digit-ui-module-engagement";
 import { initNOCComponents } from "@upyog/digit-ui-module-noc";
@@ -76,6 +78,7 @@ const enabledModules = [
   "BillAmendment",
   "FireNoc",
   "Birth",
+  "Finance",
   "Death",
   "PTR",
   "ASSET",
@@ -127,6 +130,7 @@ const initDigitUI = () => {
     MCollectLinks,
     MCollectModule,
     HRMSModule,
+    FinanceModule,
     ReceiptsModule,
     BillsModule,
     PTRModule, 
@@ -171,6 +175,7 @@ const initDigitUI = () => {
   initWSComponents();
   initCommonPTComponents();
   initBillsComponents();
+  initFinanceComponents();
 
   // initCustomisationComponents();
 

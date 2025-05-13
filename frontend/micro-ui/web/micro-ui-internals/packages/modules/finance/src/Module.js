@@ -1,0 +1,43 @@
+/**
+ * Created By : Umesh Kumar 
+ * Created On : 13-05-2025
+ * Purpose : Finance Card for micro-ui
+ * Code status : closed
+ */
+import React from "react";
+import { useRouteMatch } from "react-router-dom";
+import FinanceCard from "./components/financecard";
+import FinanceApp from "./pages";
+import FinanceInbox from "./pages/inbox";
+
+
+export const FinanceModule = ({ stateCode, userType, tenants }) => {
+  const moduleCode = "Finance";
+  const language = Digit.StoreData.getCurrentLanguage();
+  const { isLoading, data: store } = Digit.Services.useStore({ stateCode, moduleCode, language });
+
+  Digit.SessionStorage.set("FINANCE_TENANTS", tenants);
+  const { path, url } = useRouteMatch();
+
+  const userRoles = Digit.UserService.getUser()?.info?.roles?.map(role => role.code) || [];
+  const isFinanceEmployee = userRoles.includes("EMPLOYEE") || userRoles.includes("FINANCE_EMPLOYEE");
+
+  if (!isFinanceEmployee) return null;
+
+  if (userType === "employee") {
+    // return <FinanceApp path={path} url={url} />;
+    return null;
+  } else return null;
+};
+
+const componentsToRegister = {
+  FinanceCard,
+  FinanceModule,
+  FinanceInbox
+};
+
+export const initFinanceComponents = () => {
+  Object.entries(componentsToRegister).forEach(([key, value]) => {
+    Digit.ComponentRegistryService.setComponent(key, value);
+  });
+};
