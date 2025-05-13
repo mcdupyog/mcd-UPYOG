@@ -2,13 +2,15 @@
  * Created By : Umesh Kumar 
  * Created On : 13-05-2025
  * Purpose : Finance Card for micro-ui
- * Code status : closed
+ * Code status : open
  */
 import React from "react";
 import { useRouteMatch } from "react-router-dom";
 import FinanceCard from "./components/financecard";
 import FinanceApp from "./pages";
 import FinanceInbox from "./pages/inbox";
+import RedirectToFinanceInbox from "./utils/RedirectToFinanceInbox";
+import RedirectToFinanceHome from "./utils/RedirectToFinanceHome";
 
 
 export const FinanceModule = ({ stateCode, userType, tenants }) => {
@@ -25,15 +27,16 @@ export const FinanceModule = ({ stateCode, userType, tenants }) => {
   if (!isFinanceEmployee) return null;
 
   if (userType === "employee") {
-    // return <FinanceApp path={path} url={url} />;
-    return null;
+    return <FinanceApp path={path} url={url} />;
   } else return null;
 };
 
 const componentsToRegister = {
   FinanceCard,
   FinanceModule,
-  FinanceInbox
+  FinanceInbox,
+  RedirectToFinanceInbox,
+  RedirectToFinanceHome
 };
 
 export const initFinanceComponents = () => {

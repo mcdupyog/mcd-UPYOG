@@ -2,7 +2,7 @@
  * Created By : Umesh Kumar 
  * Created On : 13-05-2025
  * Purpose : Finance Card for micro-ui
- * Code status : closed
+ * Code status : open
  */
 import React from "react";
 import { EmployeeModuleCard, FinanceChartIcon } from "@nudmcdgnpm/digit-ui-react-components";
@@ -23,23 +23,19 @@ const FinanceCard = () => {
       {
         count: "-",
         label: t("TENANT_FINANCE_MODULE"),
-        link: `/employee/inbox`,
+        link: "/digit-ui/employee/finance/redirect-home",
       },
       {
         count: "-",
         label: t("ACTION_TEST_FINANCE_INBOX"),
-        link: `/employee/services/EGF/inbox`,
+        link: "/digit-ui/employee/finance/redirect-inbox",
       }
     ],
     links: [
       // {
       //   label: t("ACTION_TEST_FINANCE_INBOX"),
-      //   link: `/employee/services/EGF/inbox`,
-      // },
-      // {
-      //   label: t("FINANCE_CREATE_VOUCHER"),
       //   link: `/digit-ui/employee/finance/inbox`,
-      // },
+      // }
     ],
   };
 
