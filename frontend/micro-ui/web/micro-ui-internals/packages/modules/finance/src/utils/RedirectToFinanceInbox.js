@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Loader } from "@nudmcdgnpm/digit-ui-react-components"; 
+import React from "react";
+import { Loader } from "@nudmcdgnpm/digit-ui-react-components";
 
 const RedirectToFinanceInbox = () => {
-  const [loading, setLoading] = useState(true); 
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const baseUrl = process.env.REACT_APP_PROXY_API;
-      const redirectPath = "/employee/services/EGF/inbox";
-      if (baseUrl && typeof window !== "undefined" && window?.location) {
-        window.location.href = `${baseUrl}${redirectPath}`;
-      }
-    }, 200);
+  const baseUrl = process.env.REACT_APP_PROXY_API;
+  const redirectPath = "/employee/services/EGF/inbox";
 
-    return () => clearTimeout(timeoutId);
-  }, []);
+  if (baseUrl && typeof window !== "undefined" && window?.location) {
+    window.location.href = `${baseUrl}${redirectPath}`;
+  }
 
   return (
     <div className="loader-container">
-      {loading && <Loader />}
+      <Loader />
     </div>
   );
 };
