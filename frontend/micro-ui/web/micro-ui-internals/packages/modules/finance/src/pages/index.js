@@ -7,8 +7,6 @@ import { PrivateRoute } from "@nudmcdgnpm/digit-ui-react-components";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, Switch, useLocation } from "react-router-dom";
-import RedirectToFinanceInbox from "../utils/RedirectToFinanceInbox";
-import RedirectToFinanceHome from "../utils/RedirectToFinanceHome";
 
 const FinanceApp = ({ path, url, userType }) => {
   const { t } = useTranslation();
@@ -22,7 +20,8 @@ const FinanceApp = ({ path, url, userType }) => {
     },
   };
 
-  const FinanceInbox = Digit.ComponentRegistryService.getComponent("FinanceInbox");
+  const FinanceInbox = Digit.ComponentRegistryService.getComponent("RedirectToFinanceInbox");
+  const FinanceHome = Digit.ComponentRegistryService.getComponent("RedirectToFinanceHome");
 
   return (
     <Switch>
@@ -34,20 +33,8 @@ const FinanceApp = ({ path, url, userType }) => {
             </Link>{" "}
             / <span>{location.pathname === "/digit-ui/employee/finance/inbox" ? t("inbox") : t("inbox")}</span>
           </p>
-          <PrivateRoute
-            path={`${path}/inbox`}
-            component={() => (
-              <FinanceInbox
-                parentRoute={path}
-                businessService="finance"
-                filterComponent="FINANCE_INBOX_FILTER"
-                initialStates={inboxInitialState}
-                isInbox={true}
-              />
-            )}
-          />
-          <PrivateRoute path={`${path}/redirect-inbox`} component={RedirectToFinanceInbox} />
-          <PrivateRoute path={`${path}/redirect-home`} component={RedirectToFinanceHome} />
+          <PrivateRoute exact path={`${path}/inbox`} component={() => <FinanceInbox />} />
+          <PrivateRoute exact path={`${path}/home`} component={() => <FinanceHome />} />
         </div>
       </React.Fragment>
     </Switch>

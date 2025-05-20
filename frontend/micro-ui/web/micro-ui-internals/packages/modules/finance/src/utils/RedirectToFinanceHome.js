@@ -1,10 +1,9 @@
 import React from "react";
 import { Loader } from "@nudmcdgnpm/digit-ui-react-components";
-import { useRouteMatch } from "react-router-dom";
 
 const RedirectToFinanceHome = () => {
 
-  const baseUrl = process.env.REACT_APP_PROXY_API;
+  const baseUrl = process.env.REACT_APP_PROXY_API || "https://mcdupyog.sparrowsoftech.in";
   const redirectPath = "/employee/services/EGF/voucher/journalVoucher-newForm.action";
 
   if (baseUrl && typeof window !== "undefined" && window?.location) {
