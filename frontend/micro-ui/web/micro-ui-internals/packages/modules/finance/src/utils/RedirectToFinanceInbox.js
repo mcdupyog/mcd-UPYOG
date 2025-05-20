@@ -3,7 +3,7 @@ import { Loader } from "@nudmcdgnpm/digit-ui-react-components";
 
 const RedirectToFinanceInbox = () => {
 
-  const baseUrl = process.env.REACT_APP_PROXY_API;
+  const baseUrl = process.env.REACT_APP_PROXY_API || "https://mcdupyog.sparrowsoftech.in";
   const redirectPath = "/employee/services/EGF/inbox";
 
   if (baseUrl && typeof window !== "undefined" && window?.location) {
@@ -12,7 +12,7 @@ const RedirectToFinanceInbox = () => {
 
   return (
     <div className="loader-container">
-      <Loader />
+      {/* <Loader /> */}
     </div>
   );
 };
