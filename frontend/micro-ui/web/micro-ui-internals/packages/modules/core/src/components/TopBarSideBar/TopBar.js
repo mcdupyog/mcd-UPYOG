@@ -37,7 +37,7 @@ const TopBar = ({
     }, 300);
     return () => clearInterval(interval);
   }, []);
-  
+
   React.useEffect(async () => {
     const tenant = Digit.ULBService.getCurrentTenantId();
     const uuid = userDetails?.info?.uuid;
@@ -119,8 +119,11 @@ const TopBar = ({
         {loggedin &&
           (cityDetails?.city?.ulbGrade ? (
             <p className="ulb" style={mobileView ? { fontSize: "14px", display: "inline-block" } : {}}>
-              {t(cityDetails?.i18nKey).toUpperCase()}{" "}
-              {t(`ULBGRADE_${cityDetails?.city?.ulbGrade.toUpperCase().replace(" ", "_").replace(".", "_")}`).toUpperCase()}
+              {t(
+                `ULBGRADE_${cityDetails?.city?.ulbGrade?.toUpperCase().replace(" ", "_").replace(".", "_")}_${cityDetails?.i18nKey
+                  ?.toUpperCase()
+                  .replace(" ", "_").replace(".", "_")}`
+              ).toUpperCase()}
               {zoneName ? ` - ${t(`TENANT_${zoneName}`).toUpperCase()}` : ""}
             </p>
           ) : (
