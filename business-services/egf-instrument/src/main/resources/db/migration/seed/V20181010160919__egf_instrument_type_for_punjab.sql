@@ -1,21 +1,21 @@
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
-VALUES ('48ff0acc-cc75-11e8-a8d5-f2801f1b9fd1', 'Cash', 'Instrument type cash', true, '1', now(), 1, now(), 'pb.mohali', 0);
+VALUES ('48ff0acc-cc75-11e8-a8d5-f2801f1b9fd1', 'Cash', 'Instrument type cash', true, '1', now(), 1, now(), 'pg.citya', 0);
 
 
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
-VALUES ('48ff1332-cc75-11e8-a8d5-f2801f1b9fd1', 'Cheque', 'Instrument type Cheque', true, '1', now(), 1, now(), 'pb.mohali', 0);
+VALUES ('48ff1332-cc75-11e8-a8d5-f2801f1b9fd1', 'Cheque', 'Instrument type Cheque', true, '1', now(), 1, now(), 'pg.citya', 0);
 
 
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
-VALUES ('48ff14cc-cc75-11e8-a8d5-f2801f1b9fd1', 'DD', 'Instrument type DD', true, '1', now(), 1, now(), 'pb.mohali', 0);
+VALUES ('48ff14cc-cc75-11e8-a8d5-f2801f1b9fd1', 'DD', 'Instrument type DD', true, '1', now(), 1, now(), 'pg.citya', 0);
 
 
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
-VALUES ('48ff160c-cc75-11e8-a8d5-f2801f1b9fd1', 'Card', 'Instrument type Cards', true, '1', now(), 1, now(), 'pb.mohali', 0);
+VALUES ('48ff160c-cc75-11e8-a8d5-f2801f1b9fd1', 'Card', 'Instrument type Cards', true, '1', now(), 1, now(), 'pg.citya', 0);
 
 
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
-VALUES ('48ff1738-cc75-11e8-a8d5-f2801f1b9fd1', 'BankChallan', 'Instrument type BankChallan', true, '1', now(), 1, now(), 'pb.mohali', 0);
+VALUES ('48ff1738-cc75-11e8-a8d5-f2801f1b9fd1', 'BankChallan', 'Instrument type BankChallan', true, '1', now(), 1, now(), 'pg.citya', 0);
 
 
 INSERT INTO egf_instrumenttype(id, name, description, active, createdby, createddate, lastmodifiedby, lastmodifieddate, tenantid, version)
