@@ -916,10 +916,10 @@ config:
    #     image-name: "cnd-calculate-db"
 
 
-  - name: 'builds/upyog/municipal-services/home'
+  - name: 'builds/upyog/municipal-services/home-ui'
     build:
-      - work-dir: 'municipal-services/home'
-        image-name: 'home'
+      - work-dir: 'municipal-services/home-ui'
+        image-name: 'home-ui'
         dockerfile: 'build/maven/Dockerfile'
    #   - work-dir: "municipal-services/home/src/main/resources/db"
    #     image-name: "home-db"
