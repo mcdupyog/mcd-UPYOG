@@ -155,8 +155,8 @@ public class InstrumentService {
                         // cal1.setTime(instrument.getTransactionDate());
                         // Assert.isTrue(cal1.after(cal), "Cheque Transaction should be before 6 months of current date or a
                         // future date");
-                        if (instrument.getBank() == null)
-                            throw new InvalidDataException("BankDetails(Cheque)", ErrorCode.NOT_NULL.getCode(), null);
+//                        if (instrument.getBank() == null)
+//                            throw new InvalidDataException("BankDetails(Cheque)", ErrorCode.NOT_NULL.getCode(), null);
                         break;
                     case "dd":
                         if (instrument.getTransactionNumber() == null)
@@ -165,8 +165,8 @@ public class InstrumentService {
                         // Assert.isTrue(cal1.after(cal), "DD Transaction should be before 6 months of current date or a future
                         // date");
                         // Assert.notNull(instrument.getPayee(), "DD Payee Details must not be null");
-                        if (instrument.getBank() == null)
-                            throw new InvalidDataException("BankDetails(DD)", ErrorCode.NOT_NULL.getCode(), null);
+//                        if (instrument.getBank() == null)
+//                            throw new InvalidDataException("BankDetails(DD)", ErrorCode.NOT_NULL.getCode(), null);
                         break;
                     case "online":
                         if (instrument.getTransactionNumber() == null)
