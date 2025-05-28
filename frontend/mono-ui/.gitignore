@@ -5,7 +5,7 @@ node_modules/
 keystore/
 web/rainmaker/yarn.lock
 
-
+*.css
 *.lock
 web/rainmaker/yarn.lock
 index.lock
