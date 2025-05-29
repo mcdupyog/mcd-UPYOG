@@ -26,6 +26,7 @@ const iconButtonStyle = {
 const EgovAppBar = ({
   className,
   ulbName,
+  zone,
   defaultTitle,
   ulbLogo,
   title,
@@ -78,6 +79,16 @@ const EgovAppBar = ({
                     `ULBGRADE_${defaultTitle.replace("ULBGRADE_", "")}_TENANT_TENANTS_${ulbName.toUpperCase().replace(/[.]/g, "_")}`
                   }
                 />
+                {zone && (
+                  <React.Fragment>
+                    <span style={{ margin: "0 4px" }}> - </span>
+                    <Label
+                      containerStyle={{ marginLeft: "0px" }}
+                      className="screenHeaderLabelStyle appbar-municipal-label"
+                      label={`TENANT_${zone.toUpperCase().replace(/[.]/g, "_")}`}
+                    />
+                  </React.Fragment>
+                )}
               </div>
             )}
           </div>
