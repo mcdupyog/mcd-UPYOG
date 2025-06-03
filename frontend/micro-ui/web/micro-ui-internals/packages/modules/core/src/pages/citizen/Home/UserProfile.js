@@ -250,7 +250,7 @@ const UserProfile = ({ stateCode, userType, cityDetails }) => {
         throw JSON.stringify({ type: "error", message: t("CORE_COMMON_PROFILE_MOBILE_NUMBER_INVALID") });
       }
 
-      if (!new RegExp(/^[6-9]{1}[0-9]{9}$/).test(altMobileNumber)) {
+      if (userType === "citizen" && !new RegExp(/^[6-9]{1}[0-9]{9}$/).test(altMobileNumber)) {
         throw JSON.stringify({ type: "error", message: t("CORE_COMMON_PROFILE_MOBILE_NUMBER_INVALID") });
       }
 
