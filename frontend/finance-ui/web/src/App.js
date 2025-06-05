@@ -26,6 +26,7 @@ const enabledModules = [
   // "HRMS",
   // "Engagement",
   "Workbench",
+  "finance",
   "PGR"
 
 ];
@@ -71,7 +72,7 @@ function App() {
       stateCode={stateCode}
       enabledModules={enabledModules}
       moduleReducers={moduleReducers}
-      // defaultLanding="employee"
+    // defaultLanding="employee"
     />
   );
 }
