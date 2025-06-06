@@ -1,6 +1,6 @@
 {
   "name": "@mcd89/digit-ui-module-finance2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Finance",
   "license": "MIT",
   "main": "dist/index.js",
@@ -23,7 +23,5 @@
     "react-query": "3.6.1",
     "react-router-dom": "5.3.0",
     "rooks": "^4.4.0"
-  },
-  "author": "UmeshKumar",
-  "devDependencies": {}
+  }
 }
