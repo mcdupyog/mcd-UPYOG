@@ -11,6 +11,8 @@ import { initEngagementComponents } from "@egovernments/digit-ui-module-engageme
 import { initHRMSComponents } from "@egovernments/digit-ui-module-hrms";
 import { initUtilitiesComponents } from "@egovernments/digit-ui-module-utilities";
 import { UICustomizations } from "./Customisations/UICustomizations";
+import { FinanceModule, initFinanceComponents } from "@mcd89/digit-ui-module-finance2";
+
 // import { initWorkbenchComponents } from "@nudmcdgnpm/digit-ui-module-workbench";
 import {
   initPGRComponents,
@@ -26,7 +28,8 @@ const enabledModules = [
   // "HRMS",
   // "Engagement",
   // "Workbench",
-  "PGR"
+  "PGR",
+  "Finance"
 
 ];
 
@@ -39,6 +42,7 @@ const initDigitUI = () => {
     PaymentModule,
     ...paymentConfigs,
     PaymentLinks,
+    FinanceModule
   });
 
   initPGRComponents();
@@ -46,6 +50,7 @@ const initDigitUI = () => {
   initHRMSComponents();
   initEngagementComponents();
   initUtilitiesComponents();
+  initFinanceComponents();
   // initWorkbenchComponents();
 
   window.Digit.Customizations = {

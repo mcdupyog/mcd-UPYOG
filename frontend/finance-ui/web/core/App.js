@@ -6,6 +6,9 @@ import { initWorkbenchComponents } from "@nudmcdgnpm/digit-ui-module-workbench";
 import { initUtilitiesComponents } from "@egovernments/digit-ui-module-utilities";
 import { initPGRComponents,PGRReducers } from "@egovernments/digit-ui-module-pgr";
 
+import { FinanceModule, initFinanceComponents } from "@mcd89/digit-ui-module-finance2";
+
+
 window.contextPath = window?.globalConfigs?.getConfig("CONTEXT_PATH");
 
 const enabledModules = [
@@ -14,6 +17,7 @@ const enabledModules = [
   "Utilities",
   "Engagement",
   "Workbench",
+  "Finance"
 ];
 
 const moduleReducers = (initData) => ({
@@ -29,6 +33,7 @@ const initDigitUI = () => {
   initUtilitiesComponents();
   initWorkbenchComponents();
   initPGRComponents();
+  initFinanceComponents();
 };
 
 initLibraries().then(() => {
