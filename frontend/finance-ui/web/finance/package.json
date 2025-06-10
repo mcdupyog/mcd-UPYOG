@@ -10,8 +10,7 @@
   "workspaces": [
     "micro-ui-internals/packages/libraries",
     "micro-ui-internals/packages/react-components",
-    "micro-ui-internals/packages/modules/workbench",
-    "micro-ui-internals/packages/modules/finance2"
+    "micro-ui-internals/packages/modules/workbench"
   ],
   "homepage": "/finance-ui",
   "dependencies": {
