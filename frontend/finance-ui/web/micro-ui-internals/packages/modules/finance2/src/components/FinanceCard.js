@@ -11,11 +11,15 @@ import { useTranslation } from "react-i18next";
 const FinanceCard = () => {
   const { t } = useTranslation();
 
-  const userRoles = Digit.UserService.getUser()?.info?.roles?.map(role => role.code) || [];
-  const isFinanceUser = userRoles.includes("EMPLOYEE") || userRoles.includes("FINANCE");
+  // const userRoles = Digit.UserService.getUser()?.info?.roles?.map(role => role.code) || [];
+  // const isFinanceUser = userRoles.includes("EMPLOYEE") || userRoles.includes("FINANCE");
 
-  if (!isFinanceUser) return null;
-
+  // if (!isFinanceUser) return null;
+  if (!Digit.Utils.finance2Access()) {
+    return null;
+    }
+  
+  // const FINANCE2_CEMP = Digit.UserService.hasAccess(["EGF_BILL_CREATOR","EGF_BILL_APPROVER"]) || false;
   const propsForModuleCard = {
     Icon: <FinanceChartIcon />,
     moduleName: t("ACTION_TEST_FINANCE").toUpperCase(),
