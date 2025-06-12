@@ -24,7 +24,7 @@ const enabledModules = [
   "HRMS",
   "Workbench",
   "PGR",
-  "Finance",
+  "Finance2",
   //  "Engagement", "NDSS","QuickPayLinks", "Payment",
   // "Utilities",
   //added to check fsm

@@ -25,7 +25,7 @@ const enabledModules = [
   "DSS",
   "NDSS",
   "Utilities",
-  "Finance",
+  "Finance2",
   "HRMS",
   // "Engagement",
   "Workbench",
@@ -52,7 +52,7 @@ const initDigitUI = () => {
   initUtilitiesComponents();
   initWorkbenchComponents();
   initFinanceComponents();
-  
+
 
   window.Digit.Customizations = {
     PGR: {},

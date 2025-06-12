@@ -20,7 +20,7 @@ const enabledModules = [
   "Utilities",
   "HRMS",
   "Engagement",
-  "Finance",
+  "Finance2",
   "PGR"
 ];
 
