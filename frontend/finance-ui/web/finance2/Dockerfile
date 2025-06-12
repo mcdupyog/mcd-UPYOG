@@ -4,6 +4,8 @@ RUN apk update && apk upgrade
 RUN apk add --no-cache git>2.30.0
 RUN yarn add @nudmcdgnpm/digit-ui-module-workbench
 RUN yarn add @mcd89/digit-ui-module-finance2
+RUN yarn add @egovernments/digit-ui-module-core
+RUN yarn add @egovernments/digit-ui-react-components
 ARG WORK_DIR
 WORKDIR /app
 ENV NODE_OPTIONS "--max-old-space-size=4792"
