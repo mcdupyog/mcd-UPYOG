@@ -22,15 +22,17 @@ const FinanceApp = ({ path, url, userType }) => {
   };
 
   const FinanceInbox = Digit.ComponentRegistryService.getComponent("Inbox");
-    const JournalVoucher = Digit.ComponentRegistryService.getComponent("JournalVoucher");
+  const JournalVoucher = Digit.ComponentRegistryService.getComponent("JournalVoucher");
 
 
   return (
     <Switch>
       <React.Fragment>
         <div className="ground-container">
-          <PrivateRoute exact path={`${path}/inbox`} component={() => <FinanceInbox />} />
+          <PrivateRoute exact path={`${path}/voucher/journalVoucher`} component={() => <FinanceInbox />} />
           <PrivateRoute exact path={`${path}/journal-voucher`} component={() => <JournalVoucher />} />
+          {/* <PrivateRoute exact path={`${path}/journal-voucher`} component={() => <JournalVoucher />} /> */}
+
         </div>
       </React.Fragment>
     </Switch>

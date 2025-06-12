@@ -17,28 +17,28 @@ const FinanceCard = () => {
   // if (!isFinanceUser) return null;
   if (!Digit.Utils.finance2Access()) {
     return null;
-    }
-  
+  }
+
   // const FINANCE2_CEMP = Digit.UserService.hasAccess(["EGF_BILL_CREATOR","EGF_BILL_APPROVER"]) || false;
   const propsForModuleCard = {
     Icon: <FinanceChartIcon />,
     moduleName: t("ACTION_TEST_FINANCE").toUpperCase(),
     links: [
       {
-      label: t("ACTION_TEST_INBOX"),
-      link: `/${window?.contextPath}/employee/finance/inbox`,
-    //   roles: ROLES.MDMS,
-    },
-    {
-      label: t("TENANT_FINANCE_MODULE"),
-      link: `/${window?.contextPath}/employee/finance/journal-voucher`,
-    //   roles: ROLES.LOCALISATION,
-    },
-    {
-      label: t("ACTION_TEST_APPLY_TEST"),
-      link: `/${window?.contextPath}/employee/finance/test`,
-    //   roles: ROLES.WORKFLOW,
-    }
+        label: t("ACTION_TEST_INBOX"),
+        link: `/${window?.contextPath}/employee/finance/voucher/journalVoucher`,
+        //   roles: ROLES.MDMS,
+      },
+      {
+        label: t("TENANT_FINANCE_MODULE"),
+        link: `/${window?.contextPath}/employee/finance/journal-voucher`,
+        //   roles: ROLES.LOCALISATION,
+      },
+      {
+        label: t("ACTION_TEST_APPLY_TEST"),
+        link: `/${window?.contextPath}/employee/finance/test`,
+        //   roles: ROLES.WORKFLOW,
+      }
     ],
   };
 
