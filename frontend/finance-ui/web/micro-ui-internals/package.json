@@ -43,7 +43,7 @@
     "build:utilities": "cd packages/modules/utilities && yarn build",
     "build:engagement": "cd packages/modules/engagement && yarn build",
     "buildD:workbench": "cd packages/modules/workbench && yarn build",
-    "buildD:finance2": "cd packages/modules/finance2 && yarn build",
+    "build:finance2": "cd packages/modules/finance2 && yarn build",
     "deploy:jenkins": "./scripts/jenkins.sh",
     "clean": "rm -rf node_modules"
   },
