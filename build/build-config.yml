@@ -923,3 +923,9 @@ config:
         dockerfile: 'build/maven/Dockerfile'
    #   - work-dir: "municipal-services/home/src/main/resources/db"
    #     image-name: "home-db"
+   
+  - name: builds/upyog/frontend/micro-ui/finance-ui
+    build:
+      - work-dir: frontend/finance-ui/
+        dockerfile: frontend/finance-ui/web/finance2/Dockerfile
+        image-name: finance-ui
