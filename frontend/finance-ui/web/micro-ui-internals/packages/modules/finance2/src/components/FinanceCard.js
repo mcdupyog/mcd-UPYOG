@@ -4,7 +4,7 @@
  * Purpose : Finance Card for micro-ui
  * Code status : open
  */
-import { EmployeeModuleCard, FinanceChartIcon } from "@egovernments/digit-ui-react-components";
+import { EmployeeModuleCard, FinanceChartIcon } from "@mcd89/finance-ui-react-components";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -22,7 +22,7 @@ const FinanceCard = () => {
   // const FINANCE2_CEMP = Digit.UserService.hasAccess(["EGF_BILL_CREATOR","EGF_BILL_APPROVER"]) || false;
   const propsForModuleCard = {
     Icon: <FinanceChartIcon />,
-    moduleName: t("ACTION_TEST_FINANCE").toUpperCase(),
+    moduleName: t("ACTION_TEST_FINANCE-2.O").toUpperCase(),
     links: [
       {
         label: t("ACTION_TEST_INBOX"),
