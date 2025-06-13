@@ -5,7 +5,7 @@ import { initHRMSComponents } from "@egovernments/digit-ui-module-hrms";
 import { UICustomizations } from "./Customisations/UICustomizations";
 import { initWorkbenchComponents } from "@nudmcdgnpm/digit-ui-module-workbench";
 import { initUtilitiesComponents } from "@egovernments/digit-ui-module-utilities";
-import { FinanceModule, initFinanceComponents } from "@mcd89/digit-ui-module-finance2";
+import { initFinanceComponents } from "@mcd89/digit-ui-module-finance2";
 import {
   initPGRComponents,
   PGRReducers,
