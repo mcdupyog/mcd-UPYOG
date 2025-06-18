@@ -153,7 +153,6 @@ export const logout = () => {
     // let userRole=get(userInfo,"roles[0].code");
     clearUserDetails();
     // window.location.replace(`${window.basename}/user/login`)
-    alert(window.location.origin);
     window.location.replace(`${window.location.origin}/digit-ui/employee/user/login`);
   };
 };
