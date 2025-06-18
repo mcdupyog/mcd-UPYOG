@@ -165,8 +165,7 @@ export const httpRequest = async (
       hasTokenExpired(status, data);
 
     if (isTokenInvalid) {
-      localStorage.clear();
-      sessionStorage.clear();
+      clearUserDetails()
       window.location.href = `${window.location.origin}/digit-ui/employee/user/login`;
       return;
     }
@@ -183,6 +182,11 @@ export const httpRequest = async (
   }
   // unhandled error
   throw new Error(apiError);
+};
+
+export const clearUserDetails = () => {
+  window.localStorage.clear();
+  window.sessionStorage.clear();
 };
 
 export const uploadFile = async (endPoint, module, file, ulbLevel) => {
