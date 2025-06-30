@@ -23,14 +23,12 @@ public class CustomTokenEnhancer extends TokenEnhancerChain {
         SecureUser su = null;
         //SecureUser su = (SecureUser) authentication.getUserAuthentication().getPrincipal();
         try {
+            log.info("In MyTokenServices before enhancing");
             su = (SecureUser) authentication.getUserAuthentication().getPrincipal();
+            log.info("In MyTokenServices after enhancing {}", su.getUsername());
         } catch (Exception e) {
             log.error("Unable to cast principal to SecureUser", e);
             throw new InvalidGrantException("Login failed. Invalid user object.");
-        }
-        if (su == null || su.getUser() == null) {
-            log.error("TokenEnhancer failed: SecureUser or su.getUser() is null. Preventing token issuance.");
-            throw new InvalidGrantException("Login failed. User session could not be initialized.");
         }
 
         final Map<String, Object> info = new LinkedHashMap<String, Object>();
@@ -49,6 +47,5 @@ public class CustomTokenEnhancer extends TokenEnhancerChain {
 
         return super.enhance(token, authentication);
     }
-
 
 }
