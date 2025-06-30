@@ -151,8 +151,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             List<GrantedAuthority> grantedAuths = new ArrayList<>();
             grantedAuths.add(new SimpleGrantedAuthority("ROLE_" + user.getType()));
             final SecureUser secureUser = new SecureUser(getUser(user));
+            log.info("SecureUser {} has been authenticated",secureUser.getUsername());
             userService.resetFailedLoginAttempts(user);
             log.info("User {} has been successfully reset before call UsernamePasswordAuthenticationToken", user.getUuid());
+            log.info("Returning UsernamePasswordAuthenticationToken: principal = {}, credentials = {}, authorities = {}",
+                    secureUser,
+                    password,
+                    grantedAuths);
             return new UsernamePasswordAuthenticationToken(secureUser,
                     password, grantedAuths);
         } else {
