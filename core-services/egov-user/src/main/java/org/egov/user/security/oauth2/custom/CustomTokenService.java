@@ -12,9 +12,13 @@ public class CustomTokenService extends DefaultTokenServices {
     @Override
     public OAuth2AccessToken createAccessToken(OAuth2Authentication authentication) throws AuthenticationException {
         log.info("In MyTokenServices before getAccessToken");
-        OAuth2AccessToken existingAccessToken = this.getAccessToken(authentication);
+        OAuth2AccessToken existingAccessToken = null;
+        try {
+            existingAccessToken = this.getAccessToken(authentication);
+        } catch (Exception e) {
+            log.warn("Could not get existing access token due to exception—ignoring and creating new.", e);
+        }
         if (existingAccessToken != null) {
-            // This revokes old access and refresh tokens and removes their Redis keys
             log.info("MyTokenServices.createAccessToken invoked. Revoking any existing tokens.");
             this.revokeToken(existingAccessToken.getValue());
         }
