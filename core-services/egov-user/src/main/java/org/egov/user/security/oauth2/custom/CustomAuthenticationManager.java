@@ -42,7 +42,9 @@ public class CustomAuthenticationManager implements AuthenticationManager {
                 result = provider.authenticate(authentication);
 
                 if (result != null) {
+                    log.info("Authentication successful before copyDetails");
                     copyDetails(authentication, result);
+                    log.info("Authentication successful after copyDetails");
                     break;
                 } else {
                     log.warn("Provider {} returned null Authentication for {}", provider.getClass().getName(), toTest.getSimpleName());
@@ -84,10 +86,16 @@ public class CustomAuthenticationManager implements AuthenticationManager {
      * @param dest   the destination authentication object
      */
     private void copyDetails(Authentication source, Authentication dest) {
+        try{
+            log.info("Copying details from {} to {}", source.getClass().getName(), dest.getClass().getName());
         if ((dest instanceof AbstractAuthenticationToken) && (dest.getDetails() == null)) {
+            log.info("before casting of the token object");
             AbstractAuthenticationToken token = (AbstractAuthenticationToken) dest;
-
+            log.info("Setting details from {} to {}", source.getClass().getName(), dest.getClass().getName());
             token.setDetails(source.getDetails());
+        }
+        } catch (Exception e) {
+            log.error("Unable to copy details from {} to {}", source.getClass().getName(), dest.getClass().getName(), e);
         }
     }
 
