@@ -158,8 +158,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                     secureUser,
                     password,
                     grantedAuths);
-            return new UsernamePasswordAuthenticationToken(secureUser,
-                    password, grantedAuths);
+            //return new UsernamePasswordAuthenticationToken(secureUser, password, grantedAuths);
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
+                    secureUser,
+                    password,
+                    grantedAuths
+            );
+
+            //Log token content
+            log.info("Constructed UsernamePasswordAuthenticationToken: isAuthenticated = {}, principal class = {}",
+                    token.isAuthenticated(),
+                    token.getPrincipal() != null ? token.getPrincipal().getClass().getName() : "null"
+            );
+            // Return
+            return token;
         } else {
             // Handle failed login attempt
             // Fetch Real IP after being forwarded by reverse proxy
