@@ -1,6 +1,7 @@
 package org.egov.user.security;
 
 import org.egov.user.security.oauth2.custom.CustomTokenEnhancer;
+import org.egov.user.security.oauth2.custom.CustomTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -68,7 +69,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public DefaultTokenServices customTokenServices() {
-        DefaultTokenServices tokenServices = new DefaultTokenServices();
+        //DefaultTokenServices tokenServices = new DefaultTokenServices();
+        CustomTokenService tokenServices = new CustomTokenService();
         tokenServices.setTokenEnhancer(customTokenEnhancer);
         tokenServices.setTokenStore(tokenStore);
         tokenServices.setSupportRefreshToken(true);
