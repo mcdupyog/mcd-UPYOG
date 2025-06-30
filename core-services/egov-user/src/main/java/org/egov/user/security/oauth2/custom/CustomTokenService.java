@@ -12,6 +12,23 @@ public class CustomTokenService extends DefaultTokenServices {
     @Override
     public OAuth2AccessToken createAccessToken(OAuth2Authentication authentication) throws AuthenticationException {
         log.info("In MyTokenServices before getAccessToken");
+        if (authentication == null) {
+            log.error("OAuth2Authentication is null");
+        } else {
+            log.info("OAuth2Authentication: {}", authentication);
+            if (authentication.getOAuth2Request() == null) {
+                log.error("OAuth2Request inside OAuth2Authentication is NULL!");
+            } else {
+                log.info("OAuth2Request clientId: {}", authentication.getOAuth2Request().getClientId());
+            }
+
+            if (authentication.getUserAuthentication() == null) {
+                log.error("UserAuthentication inside OAuth2Authentication is NULL!");
+            } else {
+                log.info("UserAuthentication: {}", authentication.getUserAuthentication());
+            }
+        }
+
         OAuth2AccessToken existingAccessToken = null;
         try {
             existingAccessToken = this.getAccessToken(authentication);
@@ -19,7 +36,6 @@ public class CustomTokenService extends DefaultTokenServices {
             log.warn("Could not get existing access token due to exception—ignoring and creating new.", e);
         }
         if (existingAccessToken != null) {
-            log.info("MyTokenServices.createAccessToken invoked. Revoking any existing tokens.");
             this.revokeToken(existingAccessToken.getValue());
         }
         log.info("MyTokenServices before return");
