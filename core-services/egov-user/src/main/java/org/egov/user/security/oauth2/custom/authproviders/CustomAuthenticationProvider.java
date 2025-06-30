@@ -100,7 +100,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                     .type(user.getType() != null ? user.getType().name() : null).roles(contract_roles).build();
             requestInfo = RequestInfo.builder().userInfo(userInfo).build();
             user = encryptionDecryptionUtil.decryptObject(user, "UserSelf", User.class, requestInfo);
-
+            log.info(user.getUuid());
         } catch (UserNotFoundException e) {
             log.error("User not found", e);
             throw new OAuth2Exception("Invalid login credentials");
@@ -152,6 +152,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             grantedAuths.add(new SimpleGrantedAuthority("ROLE_" + user.getType()));
             final SecureUser secureUser = new SecureUser(getUser(user));
             userService.resetFailedLoginAttempts(user);
+            log.info("User {} has been successfully reset before call UsernamePasswordAuthenticationToken", user.getUuid());
             return new UsernamePasswordAuthenticationToken(secureUser,
                     password, grantedAuths);
         } else {

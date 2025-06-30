@@ -32,6 +32,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
         Authentication result = null;
 
         for (AuthenticationProvider provider : authenticationProviders) {
+            log.info("Provider class: {}", provider.getClass().getName());
             if (!provider.supports(toTest)) {
                 continue;
             }
