@@ -30,7 +30,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         Class<? extends Authentication> toTest = authentication.getClass();
         Authentication result = null;
-
+        log.info("In authenticate manager");
         for (AuthenticationProvider provider : authenticationProviders) {
             log.info("Provider class: {}", provider.getClass().getName());
             if (!provider.supports(toTest)) {
@@ -44,10 +44,16 @@ public class CustomAuthenticationManager implements AuthenticationManager {
                 if (result != null) {
                     copyDetails(authentication, result);
                     break;
+                } else {
+                    log.warn("Provider {} returned null Authentication for {}", provider.getClass().getName(), toTest.getSimpleName());
                 }
             } catch (AccountStatusException | InternalAuthenticationServiceException e) {
                 // SEC-546: Avoid polling additional providers if auth failure is due to
                 // invalid account status
+                log.error("Provider {} threw AccountStatusException/InternalAuthServiceException: {}",
+                        provider.getClass().getName(),
+                        e.getMessage(),
+                        e);
                 throw e;
             } catch (AuthenticationException e) {
                 log.error("Unable to authenticate", e);
