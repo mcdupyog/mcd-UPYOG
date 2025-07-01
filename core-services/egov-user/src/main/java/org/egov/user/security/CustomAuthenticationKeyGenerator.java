@@ -52,12 +52,15 @@ public class CustomAuthenticationKeyGenerator implements AuthenticationKeyGenera
         MessageDigest digest;
         try {
             digest = MessageDigest.getInstance(hashAlgorithm);
+            log.info("DEBUG: digest = {}", digest);
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalStateException(hashAlgorithm+" algorithm not available.  Fatal (should be in the JDK).");
         }
 
         try {
+            log.info("before digest bytes");
             byte[] bytes = digest.digest(values.toString().getBytes("UTF-8"));
+            log.info("after digest bytes: bytes = {}", bytes.length);
             return String.format("%032x", new BigInteger(1, bytes));
         } catch (UnsupportedEncodingException e) {
             throw new IllegalStateException("UTF-8 encoding not available.  Fatal (should be in the JDK).");
