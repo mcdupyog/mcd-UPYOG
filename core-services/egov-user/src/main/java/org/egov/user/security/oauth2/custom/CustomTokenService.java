@@ -9,25 +9,25 @@ import org.springframework.security.core.AuthenticationException;
 @Slf4j
 public class CustomTokenService extends DefaultTokenServices {
 
-    @Override
-    public OAuth2AccessToken createAccessToken(OAuth2Authentication authentication) throws AuthenticationException {
-        log.info("In MyTokenServices before getAccessToken");
-        if (authentication == null) {
-            log.error("OAuth2Authentication is null");
-        } else {
-            log.info("OAuth2Authentication: {}", authentication);
-            if (authentication.getOAuth2Request() == null) {
-                log.error("OAuth2Request inside OAuth2Authentication is NULL!");
+        @Override
+        public OAuth2AccessToken createAccessToken(OAuth2Authentication authentication) throws AuthenticationException {
+            log.info("In MyTokenServices before getAccessToken");
+            if (authentication == null) {
+                log.error("OAuth2Authentication is null");
             } else {
-                log.info("OAuth2Request clientId: {}", authentication.getOAuth2Request().getClientId());
-            }
+                log.info("OAuth2Authentication: {}", authentication);
+                if (authentication.getOAuth2Request() == null) {
+                    log.error("OAuth2Request inside OAuth2Authentication is NULL!");
+                } else {
+                    log.info("OAuth2Request clientId: {}", authentication.getOAuth2Request().getClientId());
+                }
 
-            if (authentication.getUserAuthentication() == null) {
-                log.error("UserAuthentication inside OAuth2Authentication is NULL!");
-            } else {
-                log.info("UserAuthentication: {}", authentication.getUserAuthentication());
+                if (authentication.getUserAuthentication() == null) {
+                    log.error("UserAuthentication inside OAuth2Authentication is NULL!");
+                } else {
+                    log.info("UserAuthentication: {}", authentication.getUserAuthentication());
+                }
             }
-        }
 
         OAuth2AccessToken existingAccessToken = null;
         try {
@@ -38,7 +38,21 @@ public class CustomTokenService extends DefaultTokenServices {
         if (existingAccessToken != null) {
             this.revokeToken(existingAccessToken.getValue());
         }
-        log.info("MyTokenServices before return");
-        return super.createAccessToken(authentication);
+        OAuth2AccessToken accessToken;
+
+        try {
+            log.info("About to create access token...");
+            log.info("Authentication: {}", authentication);
+            log.info("Principal: {}", authentication.getPrincipal());
+            log.info("Details: {}", authentication.getDetails());
+            log.info("Authorities: {}", authentication.getAuthorities());
+            accessToken = super.createAccessToken(authentication);
+            log.info("Access token created successfully: {}", accessToken);
+        } catch (Exception e) {
+            log.error("Exception occurred while creating access token", e);
+            throw e; // You can rethrow or wrap if you want
+        }
+        return accessToken;
+        //return super.createAccessToken(authentication);
     }
 }
