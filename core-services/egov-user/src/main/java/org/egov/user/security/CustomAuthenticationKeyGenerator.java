@@ -33,7 +33,7 @@ public class CustomAuthenticationKeyGenerator implements AuthenticationKeyGenera
         OAuth2Request authorizationRequest = authentication.getOAuth2Request();
         log.info("DEBUG: authorizationRequest = {}", authorizationRequest);
         if (!authentication.isClientOnly()) {
-            log.info("Client Name value put");
+            log.info("Client Name value put {}", authentication.getName());
             values.put(USERNAME, authentication.getName());
         }
         log.info("Client ID value put");
