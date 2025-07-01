@@ -9,6 +9,8 @@ import org.egov.user.persistence.repository.ActionRestRepository;
 import org.egov.user.security.CustomAuthenticationKeyGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -26,7 +28,8 @@ public class TokenService {
     private boolean isRoleStateLevel;
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private JedisConnectionFactory jedisConnectionFactory;
+
 
     @Autowired
     private CustomAuthenticationKeyGenerator authenticationKeyGenerator;
@@ -72,6 +75,7 @@ public class TokenService {
      * @param authentication the authentication object
      */
     public void deleteAuthToAccessKey(OAuth2Authentication authentication) {
+        RedisConnection connection = null;
         if (authentication == null) {
             log.warn("Cannot delete auth_to_access key: authentication is null");
             return;
@@ -82,7 +86,12 @@ public class TokenService {
             String authenticationKey = authenticationKeyGenerator.extractKey(authentication);
             String redisKey = "auth_to_access:" + authenticationKey;
             log.info("Deleting Redis auth_to_access key: {}", redisKey);
-            redisTemplate.delete(redisKey);
+
+            connection = jedisConnectionFactory.getConnection();
+            // Select DB 0 (in case your factory is configured differently)
+            connection.select(0);
+            Long removed = connection.del(redisKey.getBytes());
+            log.info("Deleted key '{}'? {}", redisKey, removed == 1);
 
         } catch (Exception e) {
             log.error("Error while deleting auth_to_access key from Redis", e);
