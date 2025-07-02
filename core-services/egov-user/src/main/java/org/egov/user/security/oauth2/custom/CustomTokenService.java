@@ -27,46 +27,27 @@ public class CustomTokenService extends DefaultTokenServices {
         if (authentication == null) {
             log.error("OAuth2Authentication is null");
         } else {
-            log.info("OAuth2Authentication: {}", authentication);
-            if (authentication.getOAuth2Request() == null) {
-                log.error("OAuth2Request inside OAuth2Authentication is NULL!");
-            } else {
-                log.info("OAuth2Request clientId: {}", authentication.getOAuth2Request().getClientId());
-            }
-
-            if (authentication.getUserAuthentication() == null) {
-                log.error("UserAuthentication inside OAuth2Authentication is NULL!");
-            } else {
-                log.info("UserAuthentication: {}", authentication.getUserAuthentication());
-            }
+            log.debug("OAuth2Authentication: {}", authentication);
         }
 
-        OAuth2AccessToken existingAccessToken = null;
         try {
-            existingAccessToken = this.getAccessToken(authentication);
+            OAuth2AccessToken existingAccessToken = this.getAccessToken(authentication);
         } catch (Exception e) {
-            log.warn("Could not get existing access token due to exception—ignoring and creating new.", e);
-        }
-        if (existingAccessToken != null) {
-            this.revokeToken(existingAccessToken.getValue());
+            log.warn("Could not get existing access token due to exception — ignoring exception and creating new.");
+            try {
+                // Delete the old auth_to_access key (stale Redis mapping) in case of exception
+                tokenService.deleteAuthToAccessKey(authentication);
+            } catch (Exception ex) {
+                log.error("Error while deleting old auth_to_access key", ex);
+            }
         }
 
-        // Delete the old auth_to_access key (stale Redis mapping)
-        try {
-            tokenService.deleteAuthToAccessKey(authentication);
-        } catch (Exception e) {
-            log.error("Error while deleting old auth_to_access key", e);
-        }
         OAuth2AccessToken accessToken;
 
         try {
             log.info("About to create access token...");
-            log.info("Authentication: {}", authentication);
-            log.info("Principal: {}", authentication.getPrincipal());
-            log.info("Details: {}", authentication.getDetails());
-            log.info("Authorities: {}", authentication.getAuthorities());
             accessToken = super.createAccessToken(authentication);
-            log.info("Access token created successfully: {}", accessToken);
+            log.info("Access token created successfully:");
         } catch (Exception e) {
             log.error("Exception occurred while creating access token", e);
             throw e; // You can rethrow or wrap if you want
