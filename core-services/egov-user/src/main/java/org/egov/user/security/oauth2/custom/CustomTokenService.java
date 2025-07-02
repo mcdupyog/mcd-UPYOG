@@ -17,7 +17,9 @@ public class CustomTokenService extends DefaultTokenServices {
     @Autowired
     private TokenService tokenService;
 
-    public CustomTokenService(TokenStore tokenStore) {
+    // manual token store pass as constructor param removed
+    @Autowired
+    public void setTokenStore(TokenStore tokenStore) {
         super.setTokenStore(tokenStore);
     }
 
