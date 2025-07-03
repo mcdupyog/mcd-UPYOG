@@ -26,17 +26,17 @@ const FinanceCard = () => {
     links: [
       {
         label: t("ACTION_TEST_INBOX"),
-        link: `/${window?.contextPath}/employee/finance/voucher/journalVoucher`,
+        link: `/${window?.contextPath}/employee/finance2/voucher/journalVoucher`,
         //   roles: ROLES.MDMS,
       },
       {
         label: t("TENANT_FINANCE_MODULE"),
-        link: `/${window?.contextPath}/employee/finance/journal-voucher`,
+        link: `/${window?.contextPath}/employee/finance2/journal-voucher`,
         //   roles: ROLES.LOCALISATION,
       },
       {
         label: t("ACTION_TEST_APPLY_TEST"),
-        link: `/${window?.contextPath}/employee/finance/test`,
+        link: `/${window?.contextPath}/employee/finance2/test`,
         //   roles: ROLES.WORKFLOW,
       }
     ],
