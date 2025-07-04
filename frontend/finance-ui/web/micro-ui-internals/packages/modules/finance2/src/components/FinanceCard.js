@@ -24,19 +24,24 @@ const FinanceCard = () => {
     Icon: <FinanceChartIcon />,
     moduleName: t("ACTION_TEST_FINANCE-2.O").toUpperCase(),
     links: [
+       {
+        label: t("Sample"),
+        link: `/${window?.contextPath}/employee/finance2/sample`,
+        //   roles: ROLES.MDMS,
+      },
       {
         label: t("ACTION_TEST_INBOX"),
-        link: `/${window?.contextPath}/employee/finance/voucher/journalVoucher`,
+        link: `/${window?.contextPath}/employee/finance2/inbox`,
         //   roles: ROLES.MDMS,
       },
       {
         label: t("TENANT_FINANCE_MODULE"),
-        link: `/${window?.contextPath}/employee/finance/journal-voucher`,
+        link: `/${window?.contextPath}/employee/finance2/voucher/journalVoucher`,
         //   roles: ROLES.LOCALISATION,
       },
       {
         label: t("ACTION_TEST_APPLY_TEST"),
-        link: `/${window?.contextPath}/employee/finance/test`,
+        link: `/${window?.contextPath}/employee/finance2/test`,
         //   roles: ROLES.WORKFLOW,
       }
     ],
