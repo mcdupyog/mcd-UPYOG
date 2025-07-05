@@ -87,10 +87,17 @@ public class TokenService {
             String redisKey = "auth_to_access:" + authenticationKey;
             log.info("Deleting Redis auth_to_access key: {}", redisKey);
 
-            connection = jedisConnectionFactory.getConnection();
             // Select DB 0 (in case your factory is configured differently)
-            connection.select(0);
-            Long removed = connection.del(redisKey.getBytes());
+            Long removed;
+            try {
+                connection = jedisConnectionFactory.getConnection();
+                connection.select(0);
+                removed = connection.del(redisKey.getBytes());
+            } finally {
+                if (connection != null) {
+                    connection.close();
+                }
+            }
             log.info("Deleted key '{}'? {}", redisKey, removed == 1);
 
         } catch (Exception e) {
