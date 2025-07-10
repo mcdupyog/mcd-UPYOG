@@ -43,7 +43,84 @@ const FinanceCard = () => {
         label: t("ACTION_TEST_APPLY_TEST"),
         link: `/${window?.contextPath}/employee/finance2/test`,
         //   roles: ROLES.WORKFLOW,
+      },
+       {
+        label: t("Receipt Payment Report"),
+        link: `/${window?.contextPath}/employee/finance2/report/receiptPaymentReport-newForm`,
+        //   roles: ROLES.MDMS,
+      },
+       {
+        label: t("Cash Flow Report"),
+        link: `/${window?.contextPath}/employee/finance2/report/cashFlowReport-generateCashFlowReport`,
+        //   roles: ROLES.MDMS,
+      },
+       {
+        label: t("View Bank Uploads Files"),
+        link: `/${window?.contextPath}/employee/finance2/bankstatement/search`,
+        //   roles: ROLES.MDMS,
+      },
+      {
+        label: t("Reconcile Bank Statement"),
+        link: `/${window?.contextPath}/employee/finance2/brs/autoReconciliation-newForm`,
+        //   roles: ROLES.MDMS,
+      },
+      {
+        label: t("Reconcile Bank Statement Upload"),
+        link: `/${window?.contextPath}/employee/finance2/brs/bank-reconciliation-upload`,
+        //   roles: ROLES.MDMS,
+      },
+      {
+        label: t("Reconcile Summary Report"),
+        link: `/${window?.contextPath}/employee/finance2/brs/bank-reconciliation-summary-report`,
+        //   roles: ROLES.MDMS,
+      }, 
+      {
+        label: t("Bank statement Entites Not in Bank Book"),
+        link: `/${window?.contextPath}/employee/finance2/brs/bank-entries-not-in-bank-book`,
+        //   roles: ROLES.MDMS,
+      },
+       {
+        label: t("Reconcile with Bank Manual"),
+        link: `/${window?.contextPath}/employee/finance2/brs/manual-bank-reconciliation`,
+        //   roles: ROLES.MDMS,
       }
+      ,
+       {
+        label: t("Create Work Order Master"),
+        link: `/${window?.contextPath}/employee/finance2/brs/work-order/create-work-order-master-form`,
+        //   roles: ROLES.MDMS,
+      }
+      ,
+       {
+        label: t("Create Purchase Order Master"),
+        link: `/${window?.contextPath}/employee/finance2/brs/purchase-order/create-work-order-master`,
+        //   roles: ROLES.MDMS,
+      }
+      // Add more links as needed
+      ,
+       {
+        label: t("Create Miscellaneous Receipt"),
+        link: `/${window?.contextPath}/employee/finance2/brs/revenue-accounting/Create-Miscellaneous-Receipt`,
+        //   roles: ROLES.MDMS,
+      }
+      ,
+       {
+        label: t("Cash Remittance Form"),
+        link: `/${window?.contextPath}/employee/finance2/brs/revenue-accounting/cash-remittance-form`,
+        //   roles: ROLES.MDMS,
+      }
+      ,
+       {
+        label: t("Cheque Remittance Form"),
+        link: `/${window?.contextPath}/employee/finance2/brs/revenue-accounting/cheque-remittance-form`,
+        //   roles: ROLES.MDMS,
+      },
+      {
+        label: t("Search Receipts"),
+        link: `/${window?.contextPath}/employee/finance2/brs/revenue-accounting/search-receipts`,
+        //   roles: ROLES.MDMS,
+      }
+
     ],
   };
 
