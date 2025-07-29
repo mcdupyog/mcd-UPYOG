@@ -1,6 +1,6 @@
 .sidebar {
   width: 100%;
-  background-color: #34495e !important;
+  background-color: #015296 !important;
   min-height: 100vh;
   position: relative;
   transition: all 0.3s ease;
@@ -17,11 +17,12 @@ position: relative;
 transition: all 0.2s ease;
 border-left: 3px solid transparent;
 font-size: 14px;
-border-bottom: solid 1px #202e42;
-border-top: solid 1px #425a72;
+border-bottom: solid 1px #093b64;
+border-top: solid 1px #0c66b3;
 
 }
 
+.nav>li>a:focus, .nav>li>a:hover{ background: #2c3e50!important;}
 
 
 .sidebar .nav-link:hover {
