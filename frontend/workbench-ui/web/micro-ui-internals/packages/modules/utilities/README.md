@@ -91,25 +91,25 @@ Sample URL
 _Contract Module
 
 ```bash
-  works-ui/employee/utilities/workflow?tenantId=pg.citya&applicationNo=WO/2023-24/000721&businessService=CONTRACT&moduleCode=contract
+  works-ui/employee/utilities/workflow?tenantid=dl.citya&applicationNo=WO/2023-24/000721&businessService=CONTRACT&moduleCode=contract
 ```
 
 _Estimate Module
 
 ```bash
-  works-ui/employee/utilities/workflow?tenantId=pg.citya&applicationNo=ES/2023-24/001606&businessService=ESTIMATE&moduleCode=estimate
+  works-ui/employee/utilities/workflow?tenantid=dl.citya&applicationNo=ES/2023-24/001606&businessService=ESTIMATE&moduleCode=estimate
 ```
 
 _Attendance Module
 
 ```bash
-  works-ui/employee/utilities/workflow?tenantId=pg.citya&applicationNo=MR/2023-24/05/31/000778&businessService=MR&moduleCode=muster%20roll
+  works-ui/employee/utilities/workflow?tenantid=dl.citya&applicationNo=MR/2023-24/05/31/000778&businessService=MR&moduleCode=muster%20roll
 ```
 
 _Bill Module
 
 ```bash
-  works-ui/employee/utilities/workflow?tenantId=pg.citya&applicationNo=PB/2023-24/000379&businessService=EXPENSE.PURCHASE&moduleCode=wages.purchase
+  works-ui/employee/utilities/workflow?tenantid=dl.citya&applicationNo=PB/2023-24/000379&businessService=EXPENSE.PURCHASE&moduleCode=wages.purchase
 ```
 
 
