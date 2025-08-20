@@ -151,63 +151,7 @@ export const httpRequest = async (
       }
     }
   } catch (error) {
-    const response = error.response || {};
-    const data = response.data || {};
-    const status = response.status || 0;
-    var errorMessage = "";
-    if (data.Errors && data.Errors.length > 0) {
-      errorMessage =
-        (data.Errors[0].message || "") + (data.Errors[0].description || "");
-    }
-    var isTokenInvalid =
-      errorMessage.indexOf("InvalidAccessTokenException") !== -1 ||
-      errorMessage.indexOf("INVALID_TOKEN") !== -1 ||
-      hasTokenExpired(status, data);
-
-    if (isTokenInvalid) {
-        // added by umesh to handle token invalidation, when token invalid, first it logout from finance then redirect to login page
-        const authToken = getAccessToken();
-        if (authToken) {
-          try {
-          const tenantIdFull = getTenantId(); 
-          const tenantParts = tenantIdFull.split('.');
-          const cityCode = tenantParts.length > 1 ? tenantParts[1] : undefined;  // tenantParts[0] is "pg" in this case
-          const baseProxy = process.env.REACT_APP_BASE_PROXY || "https://mcdupyog.sparrowsoftech.in"; 
-          const parsedURL = new URL(baseProxy);
-          const domain = parsedURL.hostname; // e.g., mcdupyog.sparrowsoftech.in
-          const protocol = parsedURL.protocol; 
-          const clearTokenURL = `${protocol}//${cityCode}-${domain}/services/EGF/rest/logout`;  // Construct the final logout URL
-          const payload = {
-            RequestInfo: {
-              apiId: null,
-              ver: null,
-              ts: new Date().getTime(),
-              action: null,
-              did: null,
-              key: null,
-              msgId: null,
-              authToken: authToken,
-              correlationId: null,
-              userInfo: null,
-            },
-          };
-          await fetch(clearTokenURL, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include",
-            body: JSON.stringify(payload),
-          });
-        } catch (e) {
-          console.error("Error during custom logout API call:", e);
-        }
-      }
-      clearUserDetails()
-      window.location.href = `${window.location.origin}/digit-ui/employee/user/login`;
-      return;
-    }
-
+    const { data, status } = error.response;
     if (hasTokenExpired(status, data)) {
       apiError = "INVALID_TOKEN";
     } else {
@@ -220,11 +164,6 @@ export const httpRequest = async (
   }
   // unhandled error
   throw new Error(apiError);
-};
-
-export const clearUserDetails = () => {
-  window.localStorage.clear();
-  window.sessionStorage.clear();
 };
 
 export const uploadFile = async (endPoint, module, file, ulbLevel) => {
